@@ -1,266 +1,123 @@
-#!/bin/bash
+#/bin/bash
 
-TMP_FOLDER=$(mktemp -d)
-CONFIG_FILE='proxynode.conf'
-CONFIGFOLDER='/root/.proxynode'
-COIN_DAEMON='/usr/local/bin/proxynoded'
-COIN_CLI='/usr/local/bin/proxynode-cli'
-COIN_TGZ='https://github.com/ProxyNode/proxynode/releases/download/v1.0.0/Linux.zip'
-COIN_ZIP='https://github.com/ProxyNode/proxynode/releases/download/v1.0.0/Linux.zip'
-COIN_NAME='proxynode'
-COIN_PORT=12195
-RPC_PORT=12196
+cd ~
+echo "****************************************************************************"
+echo "* Ubuntu 16.04 is the recommended operating system for this install.       *"
+echo "*                                                                          *"
+echo "* This script will install and configure your Proxynode   masternodes.     *"
+echo "*                                                                          *"
+echo "*        IPv6 will be used if available                                    *"
+echo "*                                                                          *"
+echo "****************************************************************************"
+echo && echo && echo
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "!                                                 !"
+echo "! Make sure you double check before hitting enter !"
+echo "!                                                 !"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo && echo && echo
 
+echo "Do you want to install all needed dependencies (no if you did it before)? [y/n]"
+read DOSETUP
 
-NODEIP=$(curl -s4 icanhazip.com)
+if [ $DOSETUP = "y" ]
+then
+  sudo apt-get update
+  sudo apt-get -y upgrade
+  sudo apt-get -y dist-upgrade
+  sudo apt-get update
+  sudo apt-get install -y zip unzip
 
+  cd /var
+  sudo touch swap.img
+  sudo chmod 600 swap.img
+  sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=2000
+  sudo mkswap /var/swap.img
+  sudo swapon /var/swap.img
+  sudo free
+  sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
+  cd
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
-
-function compile_node() {
-  echo -e "Prepare to launch $COIN_NAME"
-  wget https://github.com/ProxyNode/proxynode/releases/download/v1.0.0/Linux.zip
+  wget https://github.com/prxcoin/prxcoin/releases/download/v1.4.0.0/Linux.zip
   unzip Linux.zip
-  chmod +x Linux/*
-  cd Linux/bin
-  sudo cp proxynoded proxynode-cli /usr/local/bin
-  chmod +x /usr/local/bin/*
-  cd -
-  clear
-}
+  chmod +x Linux/bin/*
+  sudo mv  Linux/bin/* /usr/local/bin
+  rm -rf Linux.zip Windows Linux Mac
 
-function configure_systemd() {
-  cat << EOF > /etc/systemd/system/$COIN_NAME.service
-[Unit]
-Description=$COIN_NAME service
-After=network.target
-[Service]
-User=root
-Group=root
-Type=forking
-#PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
-ExecStart=$COIN_PATH$COIN_DAEMON -daemon -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER
-ExecStop=-$COIN_PATH$COIN_CLI -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER stop
-Restart=always
-PrivateTmp=true
-TimeoutStopSec=60s
-TimeoutStartSec=10s
-StartLimitInterval=120s
-StartLimitBurst=5
-[Install]
-WantedBy=multi-user.target
-EOF
+  sudo apt-get install -y ufw
+  sudo ufw allow ssh/tcp
+  sudo ufw limit ssh/tcp
+  sudo ufw logging on
+  echo "y" | sudo ufw enable
+  sudo ufw status
 
-  systemctl daemon-reload
-  sleep 3
-  systemctl start $COIN_NAME.service
-  systemctl enable $COIN_NAME.service >/dev/null 2>&1
-
-  if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
-    echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
-    echo -e "${GREEN}systemctl start $COIN_NAME.service"
-    echo -e "systemctl status $COIN_NAME.service"
-    echo -e "less /var/log/syslog${NC}"
-    exit 1
-  fi
-}
-
-function create_config() {
-  mkdir $CONFIGFOLDER >/dev/null 2>&1
-  RPCUSER=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
-  RPCPASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
-  cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
-rpcuser=$RPCUSER
-rpcpassword=$RPCPASSWORD
-rpcallowip=127.0.0.1
-listen=1
-server=1
-daemon=1
-port=$COIN_PORT
-addnode=178.238.235.79:12195
-addnode=79.143.189.105:12195
-addnode=185.2.103.114:12195
-EOF
-}
-
-
-function create_key() {
-  echo -e "Enter your ${RED}$COIN_NAME Masternode Private Key${NC}. Leave it blank to generate a new ${RED}Masternode Private Key${NC} for you:"
-  read -e COINKEY
-  if [[ -z "$COINKEY" ]]; then
-  $COIN_DAEMON -daemon
-  sleep 30
-  if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
-   echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
-   exit 1
-  fi
-  COINKEY=$($COIN_CLI masternode genkey)
-  if [ "$?" -gt "0" ];
-    then
-    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the Private Key${NC}"
-    sleep 30
-    COINKEY=$($COIN_CLI masternode genkey)
-  fi
-  $COIN_CLI stop
-fi
-clear
-}
-
-
-function update_config() {
-  sed -i 's/daemon=1/daemon=0/' $CONFIGFOLDER/$CONFIG_FILE
-  cat << EOF >> $CONFIGFOLDER/$CONFIG_FILE
-logintimestamps=1
-maxconnections=256
-#bind=$NODEIP
-masternode=1
-externalip=$NODEIP:$COIN_PORT
-masternodeprivkey=$COINKEY
-EOF
-}
-
-
-function enable_firewall() {
-  echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
-  ufw allow $COIN_PORT/tcp comment "$COIN_NAME MN port" >/dev/null
-  ufw allow ssh comment "SSH" >/dev/null 2>&1
-  ufw limit ssh/tcp >/dev/null 2>&1
-  ufw default allow outgoing >/dev/null 2>&1
-  echo "y" | ufw enable >/dev/null 2>&1
-}
-
-
-
-function get_ip() {
-  declare -a NODE_IPS
-  for ips in $(netstat -i | awk '!/Kernel|Iface|lo/ {print $1," "}')
-  do
-    NODE_IPS+=($(curl --interface $ips --connect-timeout 2 -s4 icanhazip.com))
-  done
-
-  if [ ${#NODE_IPS[@]} -gt 1 ]
-    then
-      echo -e "${GREEN}More than one IP. Please type 0 to use the first IP, 1 for the second and so on...${NC}"
-      INDEX=0
-      for ip in "${NODE_IPS[@]}"
-      do
-        echo ${INDEX} $ip
-        let INDEX=${INDEX}+1
-      done
-      read -e choose_ip
-      NODEIP=${NODE_IPS[$choose_ip]}
-  else
-    NODEIP=${NODE_IPS[0]}
-  fi
-}
-
-
-function compile_error() {
-if [ "$?" -gt "0" ];
- then
-  echo -e "${RED}Failed to compile $COIN_NAME. Please investigate.${NC}"
-  exit 1
-fi
-}
-
-
-function checks() {
-if [[ $(lsb_release -d) != *16.04* ]]; then
-  echo -e "${RED}You are not running Ubuntu 16.04. Installation is cancelled.${NC}"
-  exit 1
+  mkdir -p ~/bin
+  echo 'export PATH=~/bin:$PATH' > ~/.bash_aliases
+  source ~/.bashrc
 fi
 
-if [[ $EUID -ne 0 ]]; then
-   echo -e "${RED}$0 must be run as root.${NC}"
-   exit 1
-fi
+ ## Setup conf
+ IP=$(curl -k https://ident.me)
+ mkdir -p ~/bin
+ echo ""
+ echo "Configure your masternodes now!"
+ echo "Detecting IP address:$IP"
 
-if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMOM" ] ; then
-  echo -e "${RED}$COIN_NAME is already installed.${NC}"
-  exit 1
-fi
-}
+  echo ""
+  echo "Enter alias for new node"
+  read ALIAS
 
-function prepare_system() {
-echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node."
-apt-get update >/dev/null 2>&1
-DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
-DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y -qq upgrade >/dev/null 2>&1
-apt install -y software-properties-common >/dev/null 2>&1
-echo -e "${GREEN}Adding bitcoin PPA repository"
-apt-add-repository -y ppa:bitcoin/bitcoin >/dev/null 2>&1
-echo -e "Installing required packages, it may take some time to finish.${NC}"
-apt-get update >/dev/null 2>&1
-apt-get install -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" make software-properties-common \
-build-essential libtool unzip autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev libboost-program-options-dev \
-libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git wget curl libdb4.8-dev bsdmainutils libdb4.8++-dev \
-libminiupnpc-dev libgmp3-dev ufw pkg-config libevent-dev  libdb5.3++ libzmq5 >/dev/null 2>&1
-if [ "$?" -gt "0" ];
-  then
-    echo -e "${RED}Not all required packages were installed properly. Try to install them manually by running the following commands:${NC}\n"
-    echo "apt-get update"
-    echo "apt -y install software-properties-common"
-    echo "apt-add-repository -y ppa:bitcoin/bitcoin"
-    echo "apt-get update"
-    echo "apt install -y make build-essential libtool software-properties-common autoconf libssl-dev libboost-dev libboost-chrono-dev libboost-filesystem-dev \
-libboost-program-options-dev libboost-system-dev libboost-test-dev libboost-thread-dev sudo automake git curl libdb4.8-dev \
-bsdmainutils libdb4.8++-dev libminiupnpc-dev libgmp3-dev ufw fail2ban pkg-config libevent-dev"
- exit 1
-fi
+  echo ""
+  echo "Enter port for node $ALIAS"
+  echo "Just press enter"
+  DEFAULTPORT=12195
+  PORT=12195
+  
+  echo ""
+  echo "Enter masternode private key for node $ALIAS"
+  read PRIVKEY
 
-clear
-}
+  RPCPORT=12196
+  echo "The RPC port is $RPCPORT"
 
-function create_swap() {
- echo -e "Checking if swap space is needed."
- PHYMEM=$(free -g|awk '/^Mem:/{print $2}')
- SWAP=$(free -g|awk '/^Swap:/{print $2}')
- if [ "$PHYMEM" -lt "2" ] && [ -n "$SWAP" ]
-  then
-    echo -e "${GREEN}Server is running with less than 2G of RAM without SWAP, creating 2G swap file.${NC}"
-    SWAPFILE=$(mktemp)
-    dd if=/dev/zero of=$SWAPFILE bs=1024 count=2M
-    chmod 600 $SWAPFILE
-    mkswap $SWAPFILE
-    swapon -a $SWAPFILE
- else
-  echo -e "${GREEN}Server running with at least 2G of RAM, no swap needed.${NC}"
- fi
- clear
-}
+  ALIAS=${ALIAS}
+  CONF_DIR=~/.prx_$ALIAS
 
+  # Create scripts
+  echo '#!/bin/bash' > ~/bin/prxd_$ALIAS.sh
+  echo "prxd -daemon -conf=$CONF_DIR/prx.conf -datadir=$CONF_DIR "'$*' >> ~/bin/prxd_$ALIAS.sh
+  echo '#!/bin/bash' > ~/bin/prx-cli_$ALIAS.sh
+  echo "prx-cli -conf=$CONF_DIR/prx.conf -datadir=$CONF_DIR "'$*' >> ~/bin/prx-cli_$ALIAS.sh
+  echo '#!/bin/bash' > ~/bin/prx-tx_$ALIAS.sh
+  echo "prx-tx -conf=$CONF_DIR/prx.conf -datadir=$CONF_DIR "'$*' >> ~/bin/prx-tx_$ALIAS.sh
+  chmod 755 ~/bin/prx*.sh
 
-function important_information() {
+  mkdir -p $CONF_DIR
+  echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> prx.conf_TEMP
+  echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> prx.conf_TEMP
+  echo "rpcallowip=127.0.0.1" >> prx.conf_TEMP
+  echo "rpcport=$RPCPORT" >> prx.conf_TEMP
+  echo "listen=1" >> prx.conf_TEMP
+  echo "server=1" >> prx.conf_TEMP
+  echo "daemon=1" >> prx.conf_TEMP
+  echo "logtimestamps=1" >> prx.conf_TEMP
+  echo "maxconnections=256" >> prx.conf_TEMP
+  echo "masternode=1" >> prx.conf_TEMP
+  echo "port=$PORT" >> prx.conf_TEMP
+  echo "masternodeaddr="[$IP]":$PORT" >> prx.conf_TEMP
+  echo "masternodeprivkey=$PRIVKEY" >> prx.conf_TEMP
+  sudo ufw allow $PORT/tcp
+
+  mv prx.conf_TEMP $CONF_DIR/prx.conf
+
+  sh ~/bin/prxd_$ALIAS.sh
+  
+  
  echo
  echo -e "================================================================================================================================"
- echo -e "$COIN_NAME Masternode is up and running listening on port ${RED}$COIN_PORT${NC}."
- echo -e "Configuration file is: ${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
- echo -e "Start: ${RED}systemctl start $COIN_NAME.service${NC}"
- echo -e "Stop: ${RED}systemctl stop $COIN_NAME.service${NC}"
- echo -e "VPS_IP:PORT ${RED}$NODEIP:$COIN_PORT${NC}"
- echo -e "MASTERNODE PRIVATEKEY is: ${RED}$COINKEY${NC}"
- echo -e "Please check ${RED}$COIN_NAME${NC} is running with the following command: ${RED}systemctl status $COIN_NAME.service${NC}"
- echo -e "================================================================================================================================"
-}
+ echo -e "Proxynode coin Masternode is up and running and it is listening on port $PORT."
+ echo -e "Please make sure the you use the [] when using IPv6 in the masternode config of local wallet" [$IP]:$PORT
+ echo -e "MASTERNODE PRIVATEKEY is: $PRIVKEY"
+ echo -e "================================================================================================================================"  
+    
 
-function setup_node() {
-  get_ip
-  create_config
-  create_key
-  update_config
-  enable_firewall
-  important_information
-  configure_systemd
-}
-
-
-##### Main #####
-clear
-
-checks
-prepare_system
-create_swap
-compile_node
-setup_node
