@@ -1,6 +1,13 @@
+This is a confirmation that the old development team have left the Proxynode Project.</br>
 
+Sizzlephizzle is now in charge of the entire project and has formed a community intervention team.</br>
 
-http://www.proxynode.io
+Please join us on </br>
+- Discord https://discord.gg/zdrzD9G</br>
+- Telegram ANNs http://t.me/proxynode.network</br>
+- Telegram Chat http://t.me/proxynode.chat</br>
+
+http://www.proxynode.network</br>
 
 
 # Coin Specifications:
