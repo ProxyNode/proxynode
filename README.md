@@ -1,6 +1,6 @@
 This is a confirmation that the old development team have left the Proxynode Project.</br>
 
-Sizzlephizzle is now in charge of the entire project and has formed a community intervention team.</br>
+Sizzlephizzle (sizzlephizzle#0376 on discord) is now in charge of the entire project and has formed a community intervention team.</br>
 
 Please join us on </br>
 - Discord https://discord.gg/zdrzD9G</br>
