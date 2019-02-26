@@ -7,7 +7,7 @@ Please join us on </br>
 - Telegram ANNs http://t.me/proxynode.network</br>
 - Telegram Chat http://t.me/proxynode.chat</br>
 
-http://www.proxynode.network</br>
+http://proxynode.network</br>
 
 
 # Coin Specifications:
