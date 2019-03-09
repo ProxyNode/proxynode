@@ -106,6 +106,7 @@ fi
   echo "port=$PORT" >> prx.conf_TEMP
   echo "masternodeaddr="[$IP]":$PORT" >> prx.conf_TEMP
   echo "masternodeprivkey=$PRIVKEY" >> prx.conf_TEMP
+  curl https://raw.githubusercontent.com/ProxyNode/proxynode/master/addnodes.txt >> prx.conf_TEMP
   sudo ufw allow $PORT/tcp
 
   mv prx.conf_TEMP $CONF_DIR/prx.conf
