@@ -1,5 +1,6 @@
 // Copyright (c) 2014-2016 The Dash developers
-// Copyright (c) 2016-2017 The Prx developers
+// Copyright (c) 2016-2017 The Piv-x developers
+// Copyright (c) 2017-2040 The PRX developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
