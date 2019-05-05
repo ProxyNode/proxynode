@@ -19,7 +19,7 @@ Port=12195</br>
 Rpcport=12196</br>
 Masternode Reward: 80%</br>
 Staking Reward: 20%</br>
-Masternode collateral:  12000 PRX</br>
+Masternode collateral:  24000 PRX</br>
 Block Time: ~ 60 seconds</br>
 Maturity: 50 blocks</br>
 Minimum staking age: 6 hours</br>
