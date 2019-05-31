@@ -1,3 +1,6 @@
+v2.0.0 IS NOT THE FILESYSTEM HERE! Please use only the compiled zips in releases!!!
+
+-------------
 This is a confirmation that the old development team have left the Proxynode Project.</br>
 
 Sizzlephizzle (sizzlephizzle#0376 on discord) is now in charge of the entire project and has formed a community intervention team.</br>
