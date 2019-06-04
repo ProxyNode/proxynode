@@ -30,8 +30,7 @@ static const char* ppszTypeName[] =
         "mn budget finalized vote",
         "mn quorum",
         "mn announce",
-        "mn ping",
-        "dstx"};
+        "mn ping"};
 
 CMessageHeader::CMessageHeader()
 {

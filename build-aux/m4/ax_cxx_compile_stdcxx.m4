@@ -20,7 +20,7 @@
 #
 #   The third argument, if specified 'mandatory' or if left unspecified,
 #   indicates that baseline support for the specified C++ standard is
-#   required and that the mprxo should error out if no mode with that
+#   required and that the macro should error out if no mode with that
 #   support is found.  If specified 'optional', then configuration proceeds
 #   regardless, after defining HAVE_CXX${VERSION} if and only if a
 #   supporting mode is found.
@@ -41,7 +41,7 @@
 
 #serial 4
 
-dnl  This mprxo is based on the code from the AX_CXX_COMPILE_STDCXX_11 mprxo
+dnl  This macro is based on the code from the AX_CXX_COMPILE_STDCXX_11 macro
 dnl  (serial version number 13).
 
 AC_DEFUN([AX_CXX_COMPILE_STDCXX], [dnl

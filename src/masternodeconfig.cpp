@@ -1,3 +1,8 @@
+// Copyright (c) 2014-2015 The Dash developers
+// Copyright (c) 2015-2017 The PIVX developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 // clang-format off
 #include "net.h"
 #include "masternodeconfig.h"
@@ -55,22 +60,21 @@ bool CMasternodeConfig::read(std::string& strErr)
             }
         }
 
-        if (Params().NetworkID() == CBaseChainParams::MAIN) {
-            if (CService(ip).GetPort() != 12195) {
-                strErr = _("Invalid port detected in masternode.conf") + "\n" +
-                         strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"" + "\n" +
-                         _("(must be 12195 for mainnet)");
-                streamConfig.close();
-                return false;
-            }
-        } else if (CService(ip).GetPort() == 12195) {
-            strErr = _("Invalid port detected in masternode.conf") + "\n" +
-                     strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"" + "\n" +
-                     _("(12195 could be used only on mainnet)");
-            streamConfig.close();
-            return false;
-        }
-
+        // if (Params().NetworkID() == CBaseChainParams::MAIN) {
+        //     if (CService(ip).GetPort() != 12195) {
+        //         strErr = _("Invalid port detected in masternode.conf") + "\n" +
+        //                  strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"" + "\n" +
+        //                  _("(must be 12195 for mainnet)");
+        //         streamConfig.close();
+        //         return false;
+        //     }
+        // } else if (CService(ip).GetPort() == 12195) {
+        //     strErr = _("Invalid port detected in masternode.conf") + "\n" +
+        //              strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"" + "\n" +
+        //              _("(12195 could be used only on mainnet)");
+        //     streamConfig.close();
+        //     return false;
+        // }
 
         add(alias, ip, privKey, txHash, outputIndex);
     }

@@ -1,9 +1,8 @@
-
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 The Prx developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef MASTERNODE_H
 #define MASTERNODE_H
 
@@ -23,6 +22,8 @@
 #define MASTERNODE_REMOVAL_SECONDS (130 * 60)
 #define MASTERNODE_CHECK_SECONDS 5
 
+#define MASTERNODE_COLLATERAL 24000
+
 using namespace std;
 
 class CMasternode;
@@ -32,6 +33,39 @@ extern map<int64_t, uint256> mapCacheBlockHashes;
 
 bool GetBlockHash(uint256& hash, int nBlockHeight);
 
+
+
+inline int64_t MasternodeCollateralLimitBM(int nHeight)
+{
+	int64_t nSubsidy = 0;
+
+	 
+	if (nHeight <= 250 && nHeight > 1)
+		nSubsidy = 500;
+	else if (nHeight <= 2000 && nHeight > 250)
+		nSubsidy = 500;
+	else if (nHeight <= 15000 && nHeight > 2000)
+		nSubsidy = 1000;
+	else if (nHeight <= 40000 && nHeight > 15000)
+		nSubsidy = 2000;
+	else if (nHeight <= 75000 && nHeight > 40000)
+		nSubsidy = 4000;
+	else if (nHeight <= 125000 && nHeight > 75000)
+		nSubsidy = 6000;
+	else if (nHeight <= 250000 && nHeight > 125000)
+		nSubsidy = 12000;
+	else if (nHeight <= 300000 && nHeight > 250000)
+		nSubsidy = 24000;
+	else if (nHeight <= 500000 && nHeight > 300000)
+		nSubsidy = 24000;
+	else if (nHeight <= 1000000 && nHeight > 500000)
+		nSubsidy = 50000;
+	else
+		nSubsidy = 50000;
+
+
+	return nSubsidy;
+}
 
 //
 // The Masternode Ping Class : Contains a different serialize method for sending pings from masternodes throughout the network
@@ -101,7 +135,7 @@ public:
 };
 
 //
-// The Masternode Class. For managing the PrivateSend process. It contains the input of the 10000 PRX, signature to prove
+// The Masternode Class. It contains the input of the PRX collateral, signature to prove
 // it's the one who own that ip address and code for calculating the payment election.
 //
 class CMasternode

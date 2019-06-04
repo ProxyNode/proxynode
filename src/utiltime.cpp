@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/prx-config.h"
+#include "config/proxynode-config.h"
 #endif
 
 #include "tinyformat.h"

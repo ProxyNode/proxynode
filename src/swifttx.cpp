@@ -1,13 +1,16 @@
-
-
+// Copyright (c) 2014-2016 The Dash developers
+// Copyright (c) 2016-2017 The PIVX developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "swifttx.h"
 #include "activemasternode.h"
 #include "base58.h"
 #include "key.h"
 #include "masternodeman.h"
+#include "masternode-helpers.h"
+#include "masternodeconfig.h"
 #include "net.h"
-#include "privatesend.h"
 #include "protocol.h"
 #include "spork.h"
 #include "sync.h"
@@ -34,7 +37,7 @@ int nCompleteTXLocks;
 
 void ProcessMessageSwiftTX(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
-    if (fLiteMode) return; //disable all privatesend/masternode related functionality
+    if (fLiteMode) return; //disable all masternode related functionality
     if (!IsSporkActive(SPORK_2_SWIFTTX)) return;
     if (!masternodeSync.IsBlockchainSynced()) return;
 
@@ -119,7 +122,7 @@ void ProcessMessageSwiftTX(CNode* pfrom, std::string& strCommand, CDataStream& v
 
             return;
         }
-    } else if (strCommand == "txlvote") //SwiftTX Lock Consensus Votes
+    } else if (strCommand == "txlvote") // SwiftTX Lock Consensus Votes
     {
         CConsensusVote ctx;
         vRecv >> ctx;
@@ -466,7 +469,7 @@ bool CConsensusVote::SignatureValid()
         return false;
     }
 
-    if (!obfuScationSigner.VerifyMessage(pmn->pubKeyMasternode, vchMasterNodeSignature, strMessage, errorMessage)) {
+    if (!masternodeSigner.VerifyMessage(pmn->pubKeyMasternode, vchMasterNodeSignature, strMessage, errorMessage)) {
         LogPrintf("SwiftTX::CConsensusVote::SignatureValid() - Verify message failed\n");
         return false;
     }
@@ -484,17 +487,17 @@ bool CConsensusVote::Sign()
     //LogPrintf("signing strMessage %s \n", strMessage.c_str());
     //LogPrintf("signing privkey %s \n", strMasterNodePrivKey.c_str());
 
-    if (!obfuScationSigner.SetKey(strMasterNodePrivKey, errorMessage, key2, pubkey2)) {
+    if (!masternodeSigner.SetKey(strMasterNodePrivKey, errorMessage, key2, pubkey2)) {
         LogPrintf("CConsensusVote::Sign() - ERROR: Invalid masternodeprivkey: '%s'\n", errorMessage.c_str());
         return false;
     }
 
-    if (!obfuScationSigner.SignMessage(strMessage, errorMessage, vchMasterNodeSignature, key2)) {
+    if (!masternodeSigner.SignMessage(strMessage, errorMessage, vchMasterNodeSignature, key2)) {
         LogPrintf("CConsensusVote::Sign() - Sign message failed");
         return false;
     }
 
-    if (!obfuScationSigner.VerifyMessage(pubkey2, vchMasterNodeSignature, strMessage, errorMessage)) {
+    if (!masternodeSigner.VerifyMessage(pubkey2, vchMasterNodeSignature, strMessage, errorMessage)) {
         LogPrintf("CConsensusVote::Sign() - Verify message failed");
         return false;
     }

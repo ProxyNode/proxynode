@@ -1,4 +1,6 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
+// Copyright (c) 2014-2016 The Dash developers
+// Copyright (c) 2015-2017 The PIVX developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +15,6 @@ class CCoinControl
 {
 public:
     CTxDestination destChange;
-    bool useObfuScation;
     bool useSwiftTX;
     bool fSplitBlock;
     int nSplitBlock;
@@ -34,7 +35,6 @@ public:
         destChange = CNoDestination();
         setSelected.clear();
         useSwiftTX = false;
-        useObfuScation = true;
         fAllowOtherInputs = false;
         fAllowWatchOnly = false;
         nMinimumTotalFee = 0;
@@ -71,6 +71,17 @@ public:
     void ListSelected(std::vector<COutPoint>& vOutpoints)
     {
         vOutpoints.assign(setSelected.begin(), setSelected.end());
+    }
+
+    unsigned int QuantitySelected()
+    {
+        return setSelected.size();
+    }
+
+    void SetSelection(std::set<COutPoint> setSelected)
+    {
+        this->setSelected.clear();
+        this->setSelected = setSelected;
     }
 
 private:

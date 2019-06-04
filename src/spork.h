@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2016 The Dash developers
-// Copyright (c) 2016-2017 The Prx developers
+// Copyright (c) 2016-2017 The PIVX developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -13,7 +13,6 @@
 #include "sync.h"
 #include "util.h"
 
-#include "privatesend.h"
 #include "protocol.h"
 #include <boost/lexical_cast.hpp>
 
@@ -54,7 +53,7 @@ using namespace boost;
 #define SPORK_14_NEW_PROTOCOL_ENFORCEMENT_DEFAULT 4070908800      //OFF
 #define SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2_DEFAULT 4070908800    //OFF
 #define SPORK_16_MN_WINNER_MINIMUM_AGE_DEFAULT 8000               // Age in seconds. This should be > MASTERNODE_REMOVAL_SECONDS to avoid
-                                                                  // misconfigured new nodes in the list. 
+                                                                  // misconfigured new nodes in the list.
                                                                   // Set this to zero to emulate classic behaviour
 
 class CSporkMessage;
@@ -64,10 +63,10 @@ extern std::map<uint256, CSporkMessage> mapSporks;
 extern std::map<int, CSporkMessage> mapSporksActive;
 extern CSporkManager sporkManager;
 
+void LoadSporksFromDB();
 void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
 int64_t GetSporkValue(int nSporkID);
 bool IsSporkActive(int nSporkID);
-void ExecuteSpork(int nSporkID, int nValue);
 void ReprocessBlocks(int nBlocks);
 
 //

@@ -9,10 +9,10 @@
 # DESCRIPTION
 #
 #   Test for Unit_Test_Framework library from the Boost C++ libraries. The
-#   mprxo requires a preceding call to AX_BOOST_BASE. Further documentation
+#   macro requires a preceding call to AX_BOOST_BASE. Further documentation
 #   is available at <http://randspringer.de/boost/index.html>.
 #
-#   This mprxo calls:
+#   This macro calls:
 #
 #     AC_SUBST(BOOST_UNIT_TEST_FRAMEWORK_LIB)
 #

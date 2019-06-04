@@ -1,60 +1,60 @@
-Sample init scripts and service configuration for prxd
+Sample init scripts and service configuration for proxynoded
 ==========================================================
 
 Sample scripts and configuration files for systemd, Upstart and OpenRC
 can be found in the contrib/init folder.
 
-    contrib/init/prxd.service:    systemd service unit configuration
-    contrib/init/prxd.openrc:     OpenRC compatible SysV style init script
-    contrib/init/prxd.openrcconf: OpenRC conf.d file
-    contrib/init/prxd.conf:       Upstart service configuration file
-    contrib/init/prxd.init:       CentOS compatible SysV style init script
+    contrib/init/proxynoded.service:    systemd service unit configuration
+    contrib/init/proxynoded.openrc:     OpenRC compatible SysV style init script
+    contrib/init/proxynoded.openrcconf: OpenRC conf.d file
+    contrib/init/proxynoded.conf:       Upstart service configuration file
+    contrib/init/proxynoded.init:       CentOS compatible SysV style init script
 
 1. Service User
 ---------------------------------
 
-All three startup configurations assume the existence of a "prx" user
+All three startup configurations assume the existence of a "proxynode" user
 and group.  They must be created before attempting to use these scripts.
 
 2. Configuration
 ---------------------------------
 
-At a bare minimum, prxd requires that the rpcpassword setting be set
+At a bare minimum, proxynoded requires that the rpcpassword setting be set
 when running as a daemon.  If the configuration file does not exist or this
-setting is not set, prxd will shutdown promptly after startup.
+setting is not set, proxynoded will shutdown promptly after startup.
 
 This password does not have to be remembered or typed as it is mostly used
-as a fixed token that prxd and client programs read from the configuration
+as a fixed token that proxynoded and client programs read from the configuration
 file, however it is recommended that a strong and secure password be used
 as this password is security critical to securing the wallet should the
 wallet be enabled.
 
-If prxd is run with "-daemon" flag, and no rpcpassword is set, it will
+If proxynoded is run with "-daemon" flag, and no rpcpassword is set, it will
 print a randomly generated suitable password to stderr.  You can also
 generate one from the shell yourself like this:
 
 bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'
 
-Once you have a password in hand, set rpcpassword= in /etc/prx/prx.conf
+Once you have a password in hand, set rpcpassword= in /etc/proxynode/proxynode.conf
 
 For an example configuration file that describes the configuration settings,
-see contrib/debian/examples/prx.conf.
+see contrib/debian/examples/proxynode.conf.
 
 3. Paths
 ---------------------------------
 
 All three configurations assume several paths that might need to be adjusted.
 
-Binary:              /usr/bin/prxd
-Configuration file:  /etc/prx/prx.conf
-Data directory:      /var/lib/prxd
-PID file:            /var/run/prxd/prxd.pid (OpenRC and Upstart)
-                     /var/lib/prxd/prxd.pid (systemd)
+Binary:              /usr/bin/proxynoded
+Configuration file:  /etc/proxynode/proxynode.conf
+Data directory:      /var/lib/proxynoded
+PID file:            /var/run/proxynoded/proxynoded.pid (OpenRC and Upstart)
+                     /var/lib/proxynoded/proxynoded.pid (systemd)
 
 The configuration file, PID directory (if applicable) and data directory
-should all be owned by the prx user and group.  It is advised for security
+should all be owned by the proxynode user and group.  It is advised for security
 reasons to make the configuration file and data directory only readable by the
-prx user and group.  Access to prx-cli and other prxd rpc clients
+proxynode user and group.  Access to proxynode-cli and other proxynoded rpc clients
 can then be controlled by group membership.
 
 4. Installing Service Configuration
@@ -66,19 +66,19 @@ Installing this .service file consists on just copying it to
 /usr/lib/systemd/system directory, followed by the command
 "systemctl daemon-reload" in order to update running systemd configuration.
 
-To test, run "systemctl start prxd" and to enable for system startup run
-"systemctl enable prxd"
+To test, run "systemctl start proxynoded" and to enable for system startup run
+"systemctl enable proxynoded"
 
 4b) OpenRC
 
-Rename prxd.openrc to prxd and drop it in /etc/init.d.  Double
+Rename proxynoded.openrc to proxynoded and drop it in /etc/init.d.  Double
 check ownership and permissions and make it executable.  Test it with
-"/etc/init.d/prxd start" and configure it to run on startup with
-"rc-update add prxd"
+"/etc/init.d/proxynoded start" and configure it to run on startup with
+"rc-update add proxynoded"
 
 4c) Upstart (for Debian/Ubuntu based distributions)
 
-Drop prxd.conf in /etc/init.  Test by running "service prxd start"
+Drop proxynoded.conf in /etc/init.  Test by running "service proxynoded start"
 it will automatically start on reboot.
 
 NOTE: This script is incompatible with CentOS 5 and Amazon Linux 2014 as they
@@ -86,11 +86,11 @@ use old versions of Upstart and do not supply the start-stop-daemon uitility.
 
 4d) CentOS
 
-Copy prxd.init to /etc/init.d/prxd. Test by running "service prxd start".
+Copy proxynoded.init to /etc/init.d/proxynoded. Test by running "service proxynoded start".
 
-Using this script, you can adjust the path and flags to the prxd program by
-setting the PrxD and FLAGS environment variables in the file
-/etc/sysconfig/prxd. You can also use the DAEMONOPTS environment variable here.
+Using this script, you can adjust the path and flags to the proxynoded program by
+setting the PRXCOIND and FLAGS environment variables in the file
+/etc/sysconfig/proxynoded. You can also use the DAEMONOPTS environment variable here.
 
 5. Auto-respawn
 -----------------------------------
