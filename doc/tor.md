@@ -1,7 +1,7 @@
-TOR SUPPORT IN Prx
-=======================
+TOR SUPPORT IN Proxynode
+============================
 
-It is possible to run Prx as a Tor hidden service, and connect to such services.
+It is possible to run Proxynode as a Tor hidden service, and connect to such services.
 
 The following directions assume you have a Tor proxy running on port 9050. Many
 distributions default to having a SOCKS proxy listening on port 9050, but others
@@ -10,10 +10,10 @@ port. See [Tor Project FAQ:TBBSocksPort](https://www.torproject.org/docs/faq.htm
 for how to properly configure Tor.
 
 
-Run Prx behind a Tor proxy
-----------------------------------
+Run Proxynode behind a Tor proxy
+------------------------------------
 
-The first step is running Prx behind a Tor proxy. This will already make all
+The first step is running Proxynode behind a Tor proxy. This will already make all
 outgoing connections be anonymized, but more is possible.
 ```
 -proxy=ip:port  Set the proxy server. If SOCKS5 is selected (default), this proxy
@@ -38,16 +38,16 @@ outgoing connections be anonymized, but more is possible.
 An example how to start the client if the Tor proxy is running on local host on
 port 9050 and only allows .onion nodes to connect:
 ```
-./prxd -onion=127.0.0.1:9050 -onlynet=tor -listen=0 -addnode=dnetzj6l4cvo2fxy.onion:989
+./proxynoded -onion=127.0.0.1:9050 -onlynet=tor -listen=0 -addnode=dnetzj6l4cvo2fxy.onion:989
 ```
 
 In a typical situation, this suffices to run behind a Tor proxy:
 ```
-./prxd -proxy=127.0.0.1:9050
+./proxynoded -proxy=127.0.0.1:9050
 ```
 
-Run a Prx hidden server
--------------------------------
+Run a Proxynode hidden server
+----------------------------------
 
 If you configure your Tor system accordingly, it is possible to make your node also
 reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equivalent
@@ -59,7 +59,7 @@ SOCKSPolicy accept 127.0.0.1/8
 Log notice file /var/log/tor/notices.log
 ControlPort 9051
 HiddenServiceDir /var/lib/tor/dnet/
-HiddenServicePort 989 127.0.0.1:2188
+HiddenServicePort 989 127.0.0.1:12195
 HiddenServiceStatistics 0
 ORPort 9001
 LongLivedPorts 989
@@ -69,12 +69,12 @@ NumEntryGuards 8
 ```
 
 The directory can be different of course, but (both) port numbers should be equal to
-your prxd's P2P listen port (2188 by default).
+your proxynoded's P2P listen port (12195 by default).
 ```
--externalip=X   You can tell prx about its publicly reachable address using
+-externalip=X   You can tell proxynode about its publicly reachable address using
                 this option, and this can be a .onion address. Given the above
                 configuration, you can find your onion address in
-                /var/lib/tor/prx-service/hostname. Onion addresses are given
+                /var/lib/tor/proxynode-service/hostname. Onion addresses are given
                 preference for your node to advertize itself with, for connections
                 coming from unroutable addresses (such as 127.0.0.1, where the
                 Tor proxy typically runs).
@@ -92,35 +92,26 @@ your prxd's P2P listen port (2188 by default).
 
 In a typical situation, where you're only reachable via Tor, this should suffice:
 ```
-./prxd -proxy=127.0.0.1:9050 -externalip=dnetzj6l4cvo2fxy.onion:989 -listen
+./proxynoded -proxy=127.0.0.1:9050 -externalip=dnetzj6l4cvo2fxy.onion:989 -listen
 ```
 
 (obviously, replace the Onion address with your own). If you don't care too much
 about hiding your node, and want to be reachable on IPv4 as well, additionally
 specify:
 ```
-./prxd ... -discover
+./proxynoded ... -discover
 ```
 
-and open port 2188 on your firewall (or use -upnp).
+and open port 12195 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
 ```
-./prxd -onion=127.0.0.1:9050 -externalip=dnetzj6l4cvo2fxy.onion:989 -discover
+./proxynoded -onion=127.0.0.1:9050 -externalip=dnetzj6l4cvo2fxy.onion:989 -discover
 ```
 
-List of known Prx Tor relays
+List of known Proxynode Tor relays
 ------------------------------------
 ```
-y5kcscnhpygvvnjn.onion:989
-5bmhtjvn2jvwpiej.onion:989
-pyfdxkazur3iib7y.onion:989
-ok3ym5zy6m5klimk.onion:989
-i6vpvzk2jxuqqs5f.onion:989
-bgdhpb76fkbw5fmg.onion:989
-gtlqzb5zbws5di7g.onion:989
-f7j2m26rptm5f7af.onion:989
-dnetzj6l4cvo2fxy.onion:989
-s3v3n7xhqafg6sb7.onion:989
+***TODO***
 ```

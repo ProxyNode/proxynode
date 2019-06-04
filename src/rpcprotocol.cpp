@@ -2,13 +2,13 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 The Prx developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "rpcprotocol.h"
 
 #include "clientversion.h"
+#include "random.h"
 #include "tinyformat.h"
 #include "util.h"
 #include "utilstrencodings.h"
@@ -16,8 +16,8 @@
 #include "version.h"
 
 #include <stdint.h>
+#include <fstream>
 
-#include "json/json_spirit_writer_template.h"
 #include <boost/algorithm/string.hpp>
 #include <boost/asio.hpp>
 #include <boost/asio/ssl.hpp>
@@ -28,10 +28,11 @@
 #include <boost/iostreams/stream.hpp>
 #include <boost/shared_ptr.hpp>
 
+#include <univalue.h>
+
 using namespace std;
 using namespace boost;
 using namespace boost::asio;
-using namespace json_spirit;
 
 //! Number of bytes to allocate and read at most at once in post data
 const size_t POST_READ_SIZE = 256 * 1024;
@@ -47,7 +48,7 @@ string HTTPPost(const string& strMsg, const map<string, string>& mapRequestHeade
 {
     ostringstream s;
     s << "POST / HTTP/1.1\r\n"
-      << "User-Agent: prx-json-rpc/" << FormatFullVersion() << "\r\n"
+      << "User-Agent: Proxynode-json-rpc/" << FormatFullVersion() << "\r\n"
       << "Host: 127.0.0.1\r\n"
       << "Content-Type: application/json\r\n"
       << "Content-Length: " << strMsg.size() << "\r\n"
@@ -89,7 +90,7 @@ string HTTPError(int nStatus, bool keepalive, bool headersOnly)
     if (nStatus == HTTP_UNAUTHORIZED)
         return strprintf("HTTP/1.0 401 Authorization Required\r\n"
                          "Date: %s\r\n"
-                         "Server: prx-json-rpc/%s\r\n"
+                         "Server: Proxynode-json-rpc/%s\r\n"
                          "WWW-Authenticate: Basic realm=\"jsonrpc\"\r\n"
                          "Content-Type: text/html\r\n"
                          "Content-Length: 296\r\n"
@@ -117,7 +118,7 @@ string HTTPReplyHeader(int nStatus, bool keepalive, size_t contentLength, const 
         "Connection: %s\r\n"
         "Content-Length: %u\r\n"
         "Content-Type: %s\r\n"
-        "Server: prx-json-rpc/%s\r\n"
+        "Server: Proxynode-json-rpc/%s\r\n"
         "\r\n",
         nStatus,
         httpStatusDescription(nStatus),
@@ -249,7 +250,7 @@ int ReadHTTPMessage(std::basic_istream<char>& stream, map<string, string>& mapHe
 }
 
 /**
- * JSON-RPC protocol.  Prx speaks version 1.0 for maximum compatibility,
+ * JSON-RPC protocol.  Proxynode speaks version 1.0 for maximum compatibility,
  * but uses JSON-RPC 1.1/2.0 standards for parts of the 1.0 standard that were
  * unspecified (HTTP errors and contents of 'error').
  * 
@@ -258,20 +259,20 @@ int ReadHTTPMessage(std::basic_istream<char>& stream, map<string, string>& mapHe
  * http://www.codeproject.com/KB/recipes/JSON_Spirit.aspx
  */
 
-string JSONRPCRequest(const string& strMethod, const Array& params, const Value& id)
+string JSONRPCRequest(const string& strMethod, const UniValue& params, const UniValue& id)
 {
-    Object request;
+    UniValue request(UniValue::VOBJ);
     request.push_back(Pair("method", strMethod));
     request.push_back(Pair("params", params));
     request.push_back(Pair("id", id));
-    return write_string(Value(request), false) + "\n";
+    return request.write() + "\n";
 }
 
-Object JSONRPCReplyObj(const Value& result, const Value& error, const Value& id)
+UniValue JSONRPCReplyObj(const UniValue& result, const UniValue& error, const UniValue& id)
 {
-    Object reply;
-    if (error.type() != null_type)
-        reply.push_back(Pair("result", Value::null));
+    UniValue reply(UniValue::VOBJ);
+    if (!error.isNull())
+        reply.push_back(Pair("result", NullUniValue));
     else
         reply.push_back(Pair("result", result));
     reply.push_back(Pair("error", error));
@@ -279,16 +280,80 @@ Object JSONRPCReplyObj(const Value& result, const Value& error, const Value& id)
     return reply;
 }
 
-string JSONRPCReply(const Value& result, const Value& error, const Value& id)
+string JSONRPCReply(const UniValue& result, const UniValue& error, const UniValue& id)
 {
-    Object reply = JSONRPCReplyObj(result, error, id);
-    return write_string(Value(reply), false) + "\n";
+    UniValue reply = JSONRPCReplyObj(result, error, id);
+    return reply.write() + "\n";
 }
 
-Object JSONRPCError(int code, const string& message)
+UniValue JSONRPCError(int code, const string& message)
 {
-    Object error;
+    UniValue error(UniValue::VOBJ);
     error.push_back(Pair("code", code));
     error.push_back(Pair("message", message));
     return error;
+}
+
+/** Username used when cookie authentication is in use (arbitrary, only for
+ * recognizability in debugging/logging purposes)
+ */
+static const std::string COOKIEAUTH_USER = "__cookie__";
+/** Default name for auth cookie file */
+static const std::string COOKIEAUTH_FILE = ".cookie";
+
+boost::filesystem::path GetAuthCookieFile()
+{
+    boost::filesystem::path path(GetArg("-rpccookiefile", COOKIEAUTH_FILE));
+    if (!path.is_complete()) path = GetDataDir() / path;
+    return path;
+}
+
+bool GenerateAuthCookie(std::string *cookie_out)
+{
+    unsigned char rand_pwd[32];
+    GetRandBytes(rand_pwd, 32);
+    std::string cookie = COOKIEAUTH_USER + ":" + EncodeBase64(&rand_pwd[0],32);
+
+    /** the umask determines what permissions are used to create this file -
+     * these are set to 077 in init.cpp unless overridden with -sysperms.
+     */
+    std::ofstream file;
+    boost::filesystem::path filepath = GetAuthCookieFile();
+    file.open(filepath.string().c_str());
+    if (!file.is_open()) {
+        LogPrintf("Unable to open cookie authentication file %s for writing\n", filepath.string());
+        return false;
+    }
+    file << cookie;
+    file.close();
+    LogPrintf("Generated RPC authentication cookie %s\n", filepath.string());
+
+    if (cookie_out)
+        *cookie_out = cookie;
+    return true;
+}
+
+bool GetAuthCookie(std::string *cookie_out)
+{
+    std::ifstream file;
+    std::string cookie;
+    boost::filesystem::path filepath = GetAuthCookieFile();
+    file.open(filepath.string().c_str());
+    if (!file.is_open())
+        return false;
+    std::getline(file, cookie);
+    file.close();
+
+    if (cookie_out)
+        *cookie_out = cookie;
+    return true;
+}
+
+void DeleteAuthCookie()
+{
+    try {
+        boost::filesystem::remove(GetAuthCookieFile());
+    } catch (const boost::filesystem::filesystem_error& e) {
+        LogPrintf("%s: Unable to remove random auth cookie file: %s\n", __func__, e.what());
+    }
 }

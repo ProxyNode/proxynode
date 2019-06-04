@@ -1,14 +1,16 @@
-
-
 // Copyright (c) 2014-2015 The Dash developers
+// Copyright (c) 2015-2017 The PIVX developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef MASTERNODE_PAYMENTS_H
 #define MASTERNODE_PAYMENTS_H
 
 #include "key.h"
 #include "main.h"
 #include "masternode.h"
+#include "clientversion.h"
+
 #include <boost/lexical_cast.hpp>
 
 using namespace std;

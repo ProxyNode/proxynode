@@ -49,7 +49,6 @@ public Q_SLOTS:
     void updateMyMasternodeInfo(QString strAlias, QString strAddr, CMasternode* pmn);
     void updateMyNodeList(bool fForce = false);
     void updateNodeList();
-
 Q_SIGNALS:
 
 private:
@@ -58,18 +57,11 @@ private:
     ClientModel* clientModel;
     WalletModel* walletModel;
     CCriticalSection cs_mnlistupdate;
-	
-    // Protects tableWidgetMasternodes
-    CCriticalSection cs_mnlist;
-
-    // Protects tableWidgetMyMasternodes
-    CCriticalSection cs_mymnlist;
-
     QString strCurrentFilter;
 
 private Q_SLOTS:
     void showContextMenu(const QPoint&);
-    void on_filterLineEdit_textChanged(const QString &strFilterIn);
+    void on_filterLineEdit_textChanged(const QString& strFilterIn);
     void on_startButton_clicked();
     void on_startAllButton_clicked();
     void on_startMissingButton_clicked();

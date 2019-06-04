@@ -20,7 +20,7 @@
 #   issue an error when a bad flag is given.
 #
 #   NOTE: Implementation based on AX_CFLAGS_GCC_OPTION. Please keep this
-#   mprxo in sync with AX_CHECK_{PREPROC,COMPILE}_FLAG.
+#   macro in sync with AX_CHECK_{PREPROC,COMPILE}_FLAG.
 #
 # LICENSE
 #
@@ -40,17 +40,17 @@
 #   You should have received a copy of the GNU General Public License along
 #   with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-#   As a special exception, the respective Autoconf Mprxo's copyright owner
+#   As a special exception, the respective Autoconf Macro's copyright owner
 #   gives unlimited permission to copy, distribute and modify the configure
-#   scripts that are the output of Autoconf when processing the Mprxo. You
+#   scripts that are the output of Autoconf when processing the Macro. You
 #   need not follow the terms of the GNU General Public License when using
 #   or distributing such scripts, even though portions of the text of the
-#   Mprxo appear in them. The GNU General Public License (GPL) does govern
-#   all other use of the material that constitutes the Autoconf Mprxo.
+#   Macro appear in them. The GNU General Public License (GPL) does govern
+#   all other use of the material that constitutes the Autoconf Macro.
 #
 #   This special exception to the GPL applies to versions of the Autoconf
-#   Mprxo released by the Autoconf Archive. When you make and distribute a
-#   modified version of the Autoconf Mprxo, you may extend this special
+#   Macro released by the Autoconf Archive. When you make and distribute a
+#   modified version of the Autoconf Macro, you may extend this special
 #   exception to the GPL to apply to your modified version as well.
 
 #serial 2

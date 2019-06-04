@@ -119,11 +119,11 @@ to see it.
 **testnet mode**
 
 Run with the -testnet option to run with "play PRXs (tPRX)" on the test network, if you
-are testing multi-machine code that needs to operate prxoss the internet.
+are testing multi-machine code that needs to operate across the internet.
 
 **DEBUG_LOCKORDER**
 
-Prx Core is a multithreaded application, and deadlocks or other multithreading bugs
+Proxynode Core is a multithreaded application, and deadlocks or other multithreading bugs
 can be very difficult to track down. Compiling with -DDEBUG_LOCKORDER (configure
 CXXFLAGS="-DDEBUG_LOCKORDER -g") inserts run-time checks to keep track of which locks
 are held, and adds warnings to the debug.log file if inconsistencies are detected.
@@ -132,7 +132,7 @@ Locking/mutex usage notes
 -------------------------
 
 The code is multi-threaded, and uses mutexes and the
-LOCK/TRY_LOCK mprxos to protect data structures.
+LOCK/TRY_LOCK macros to protect data structures.
 
 Deadlocks due to inconsistent lock ordering (thread 1 locks cs_main
 and then cs_wallet, while thread 2 locks them in the opposite order:
@@ -182,7 +182,7 @@ Ignoring IDE/editor files
 In closed-source environments in which everyone uses the same IDE it is common
 to add temporary files it produces to the project-wide `.gitignore` file.
 
-However, in open source software such as Prx Core, where everyone uses
+However, in open source software such as Proxynode Core, where everyone uses
 their own editors/IDE/tools, it is less common. Only you know what files your
 editor produces and this may change from version to version. The canonical way
 to do this is thus to create your local gitignore. Add this to `~/.gitconfig`:
@@ -212,10 +212,10 @@ Development guidelines
 ============================
 
 A few non-style-related recommendations for developers, as well as points to
-pay attention to for reviewers of Prx Core code.
+pay attention to for reviewers of Proxynode Core code.
 
-General Prx Core
-----------------------
+General Proxynode Core
+--------------------------
 
 - New features should be exposed on RPC first, then can be made available in the GUI
 
@@ -324,7 +324,7 @@ Strings and formatting
 
 - For `strprintf`, `LogPrint`, `LogPrintf` formatting characters don't need size specifiers
 
-  - *Rationale*: Prx Core uses tinyformat, which is type safe. Leave them out to avoid confusion
+  - *Rationale*: Proxynode Core uses tinyformat, which is type safe. Leave them out to avoid confusion
 
 Threads and synchronization
 ----------------------------
@@ -418,7 +418,7 @@ Git and github tips
 
         [remote "upstream-pull"]
                 fetch = +refs/pull/*:refs/remotes/upstream-pull/*
-                url = git@github.com:Prx-Project/Prx.git
+                url = git@github.com:proxynode/proxynode.git
 
   This will add an `upstream-pull` remote to your git repository, which can be fetched using `git fetch --all`
   or `git fetch upstream-pull`. Afterwards, you can use `upstream-pull/NUMBER/head` in arguments to `git show`,

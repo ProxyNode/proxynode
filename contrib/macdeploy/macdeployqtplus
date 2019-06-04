@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 from __future__ import division, print_function, unicode_literals
-
-
+#
 # Copyright (C) 2011  Patrick "p2k" Schneider <me@p2k-network.org>
-# Copyright (C) 2018 The Prx developers
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -157,7 +155,7 @@ class FrameworkInfo(object):
 class ApplicationBundleInfo(object):
     def __init__(self, path):
         self.path = path
-        appName = "Prx-Qt"
+        appName = "Proxynode-Qt"
         self.binaryPath = os.path.join(path, "Contents", "MacOS", appName)
         if not os.path.exists(self.binaryPath):
             raise RuntimeError("Could not find bundle binary for " + path)
@@ -261,7 +259,10 @@ def copyFramework(framework, path, verbose):
         #standard place for Nokia Qt installer's frameworks
         fromPath = "/Library/Frameworks/" + framework.sourceFilePath
     else:
-        fromPath = framework.sourceFilePath
+        if not framework.frameworkDirectory:
+            fromPath = "/usr/local/lib/" + framework.sourceFilePath
+        else:
+            fromPath = framework.sourceFilePath
     toDir = os.path.join(path, framework.destinationDirectory)
     toPath = os.path.join(toDir, framework.binaryName)
 
@@ -342,7 +343,7 @@ def deployFrameworks(frameworks, bundlePath, binaryPath, strip, verbose, deploym
         # install_name_tool the new id into the binary
         changeInstallName(framework.installName, framework.deployedInstallName, binaryPath, verbose)
 
-        # Copy farmework to app bundle.
+        # Copy framework to app bundle.
         deployedBinaryPath = copyFramework(framework, bundlePath, verbose)
         # Skip the rest if already was deployed.
         if deployedBinaryPath is None:
@@ -606,7 +607,7 @@ else:
 
 # ------------------------------------------------
 
-target = os.path.join("dist", "Prx-Qt.app")
+target = os.path.join("dist", "Proxynode-Qt.app")
 
 if verbose >= 2:
     print("+ Copying source bundle +")

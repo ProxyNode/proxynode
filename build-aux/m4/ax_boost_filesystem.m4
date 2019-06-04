@@ -8,11 +8,11 @@
 #
 # DESCRIPTION
 #
-#   Test for Filesystem library from the Boost C++ libraries. The mprxo
+#   Test for Filesystem library from the Boost C++ libraries. The macro
 #   requires a preceding call to AX_BOOST_BASE. Further documentation is
 #   available at <http://randspringer.de/boost/index.html>.
 #
-#   This mprxo calls:
+#   This macro calls:
 #
 #     AC_SUBST(BOOST_FILESYSTEM_LIB)
 #

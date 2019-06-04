@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # Copyright (c) 2013-2016 The Bitcoin Core developers
-# Copyright (c) 2018 The LightCoinPay developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 from __future__ import division,print_function,unicode_literals
@@ -15,7 +14,7 @@ package_name_ns = sys.argv[2]
 ds = DSStore.open(output_file, 'w+')
 ds['.']['bwsp'] = {
     'ShowStatusBar': False,
-    'WindowBounds': b'{{300, 280}, {500, 343}}',
+    'WindowBounds': '{{300, 280}, {500, 343}}',
     'ContainerShowSidebar': False,
     'SidebarWidth': 0,
     'ShowTabView': False,
@@ -55,7 +54,7 @@ ds['.']['icvp'] = icvp
 ds['.']['vSrn'] = ('long', 1)
 
 ds['Applications']['Iloc'] = (370, 156)
-ds['Prx-Qt.app']['Iloc'] = (128, 156)
+ds['Proxynode-Qt.app']['Iloc'] = (128, 156)
 
 ds.flush()
 ds.close()

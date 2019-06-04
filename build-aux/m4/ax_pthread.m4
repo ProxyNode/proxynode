@@ -8,7 +8,7 @@
 #
 # DESCRIPTION
 #
-#   This mprxo figures out how to build C programs using POSIX threads. It
+#   This macro figures out how to build C programs using POSIX threads. It
 #   sets the PTHREAD_LIBS output variable to the threads library and linker
 #   flags, and the PTHREAD_CFLAGS output variable to any special C compiler
 #   flags that are needed. (The user can also force certain compiler
@@ -42,11 +42,11 @@
 #   is not found. If ACTION-IF-FOUND is not specified, the default action
 #   will define HAVE_PTHREAD.
 #
-#   Please let the authors know if this mprxo fails on any platform, or if
-#   you have any other suggestions or comments. This mprxo was based on work
+#   Please let the authors know if this macro fails on any platform, or if
+#   you have any other suggestions or comments. This macro was based on work
 #   by SGJ on autoconf scripts for FFTW (http://www.fftw.org/) (with help
-#   from M. Frigo), as well as ac_pthread and hb_pthread mprxos posted by
-#   Alejandro Forero Cuervo to the autoconf mprxo repository. We are also
+#   from M. Frigo), as well as ac_pthread and hb_pthread macros posted by
+#   Alejandro Forero Cuervo to the autoconf macro repository. We are also
 #   grateful for the helpful feedback of numerous users.
 #
 #   Updated for Autoconf 2.68 by Daniel Richard G.
@@ -69,17 +69,17 @@
 #   You should have received a copy of the GNU General Public License along
 #   with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-#   As a special exception, the respective Autoconf Mprxo's copyright owner
+#   As a special exception, the respective Autoconf Macro's copyright owner
 #   gives unlimited permission to copy, distribute and modify the configure
-#   scripts that are the output of Autoconf when processing the Mprxo. You
+#   scripts that are the output of Autoconf when processing the Macro. You
 #   need not follow the terms of the GNU General Public License when using
 #   or distributing such scripts, even though portions of the text of the
-#   Mprxo appear in them. The GNU General Public License (GPL) does govern
-#   all other use of the material that constitutes the Autoconf Mprxo.
+#   Macro appear in them. The GNU General Public License (GPL) does govern
+#   all other use of the material that constitutes the Autoconf Macro.
 #
 #   This special exception to the GPL applies to versions of the Autoconf
-#   Mprxo released by the Autoconf Archive. When you make and distribute a
-#   modified version of the Autoconf Mprxo, you may extend this special
+#   Macro released by the Autoconf Archive. When you make and distribute a
+#   modified version of the Autoconf Macro, you may extend this special
 #   exception to the GPL to apply to your modified version as well.
 
 #serial 21
@@ -152,7 +152,7 @@ case ${host_os} in
         # (non-functional) versions of the pthreads routines, so link-based
         # tests will erroneously succeed.  (We need to link with -pthreads/-mt/
         # -lpthread.)  (The stubs are missing pthread_cleanup_push, or rather
-        # a function called by this mprxo, so we could check for that, but
+        # a function called by this macro, so we could check for that, but
         # who knows whether they'll stub that too in a future libc.)  So,
         # we'll just look for -pthreads and -lpthread first:
 
@@ -210,7 +210,7 @@ for flag in $ax_pthread_flags; do
         CFLAGS="$CFLAGS $PTHREAD_CFLAGS $ax_pthread_extra_flags"
 
         # Check for various functions.  We must include pthread.h,
-        # since some functions may be mprxos.  (On the Sequent, we
+        # since some functions may be macros.  (On the Sequent, we
         # need a special flag -Kthread to make this header compile.)
         # We check for pthread_join because it is in -lpthread on IRIX
         # while pthread_create is in libc.  We check for pthread_attr_init

@@ -75,15 +75,15 @@
 //
 // Simulating variadic templates in C++98 is pretty painful since it requires
 // writing out the same function for each desired number of arguments.  To make
-// this bearable tinyformat comes with a set of mprxos which are used
+// this bearable tinyformat comes with a set of macros which are used
 // internally to generate the API, but which may also be used in user code.
 //
-// The three mprxos TINYFORMAT_ARGTYPES(n), TINYFORMAT_VARARGS(n) and
+// The three macros TINYFORMAT_ARGTYPES(n), TINYFORMAT_VARARGS(n) and
 // TINYFORMAT_PASSARGS(n) will generate a list of n argument types,
 // type/name pairs and argument names respectively when called with an integer
-// n between 1 and 16.  We can use these to define a mprxo which generates the
+// n between 1 and 16.  We can use these to define a macro which generates the
 // desired user defined function with n arguments.  To generate all 16 user
-// defined function bodies, use the mprxo TINYFORMAT_FOREACH_ARGNUM.  For an
+// defined function bodies, use the macro TINYFORMAT_FOREACH_ARGNUM.  For an
 // example, see the implementation of printf() at the end of the source file.
 //
 //
@@ -341,7 +341,7 @@ TINYFORMAT_DEFINE_FORMATVALUE_CHAR(unsigned char)
 #define TINYFORMAT_PASSARGS(n) TINYFORMAT_PASSARGS_##n
 #define TINYFORMAT_PASSARGS_TAIL(n) TINYFORMAT_PASSARGS_TAIL_##n
 
-// To keep it as transparent as possible, the mprxos below have been generated
+// To keep it as transparent as possible, the macros below have been generated
 // using python via the excellent cog.py code generation script.  This avoids
 // the need for a bunch of complex (but more general) preprocessor tricks as
 // used in boost.preprocessor.
@@ -922,7 +922,7 @@ void printf(const char* fmt, const T1& v1, const Args&... args)
 
 #else
 
-// C++98 - define the interface functions using the wrapping mprxos
+// C++98 - define the interface functions using the wrapping macros
 #define TINYFORMAT_MAKE_FORMAT_FUNCS(n)                                    \
                                                                            \
     template <TINYFORMAT_ARGTYPES(n)>                                      \
@@ -960,7 +960,7 @@ TINYFORMAT_FOREACH_ARGNUM(TINYFORMAT_MAKE_FORMAT_FUNCS)
 
 
 //------------------------------------------------------------------------------
-// Define deprecated wrapping mprxo for backward compatibility in tinyformat
+// Define deprecated wrapping macro for backward compatibility in tinyformat
 // 1.x.  Will be removed in version 2!
 #define TINYFORMAT_WRAP_FORMAT_EXTRA_ARGS
 #define TINYFORMAT_WRAP_FORMAT_N(n, returnType, funcName, funcDeclSuffix,  \
