@@ -39,10 +39,10 @@ then
   cd
 
   wget https://github.com/ProxyNode/proxynode/releases/download/v2.0.0/Proxynode-Linux-MN-v2.0.0.zip
-  unzip Linux.zip
-  chmod +x Linux/bin/*
-  sudo mv  Linux/bin/* /usr/local/bin
-  rm -rf Linux.zip Windows Linux Mac
+  unzip Proxynode-Linux-MN-v2.0.0.zip
+  chmod +x prx*
+  sudo mv  prx* /usr/local/bin
+  rm -rf Proxynode-Linux-MN-v2.0.0.zip prx*
 
   sudo apt-get install -y ufw
   sudo ufw allow ssh/tcp
