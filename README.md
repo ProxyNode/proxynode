@@ -1,4 +1,5 @@
-This is a confirmation that the old development team have left the Proxynode Project.</br>
+This is a confirmation that the old wallet v1.0.0 is now banned from the Proxynode network due to multiple exploits that have been triggered on the network causing chainsplits etc.</br>
+v2 is madatory and if you need to compile this yourself, please use v2.0.1
 
 Sizzlephizzle (sizzlephizzle#0376 on discord) is now in charge of the entire project and has formed a community intervention team.</br>
 
@@ -14,14 +15,14 @@ http://proxynode.network</br>
 Name: PROXYNODE</br>
 Ticker: PRX</br>
 Algorithm: HashX11</br>
-Maximum Supply: 275,000,000 PRX</br>
+Maximum Supply: 500,000,000 PRX</br>
 Port=12195</br>
 Rpcport=12196 (Default)</br>
 Masternode Reward: 80%</br>
 Staking Reward: 20%</br>
 Masternode collateral:  24000 PRX</br>
-Block Time: ~ 60 seconds</br>
-Maturity: 50 blocks</br>
+Block Time: ~ 65 seconds</br>
+Maturity: 21 blocks</br>
 Minimum staking age: 6 hours</br>
 
 # reward structure
