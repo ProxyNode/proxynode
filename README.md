@@ -14,15 +14,14 @@ http://proxynode.network</br>
 Name: PROXYNODE</br>
 Ticker: PRX</br>
 Algorithm: HashX11</br>
-Maximum Supply: 275,000,000 PRX</br>
+Maximum Supply: 500,000,000 PRX</br>
 Port=12195</br>
 Rpcport=12196 (Default)</br>
 Masternode Reward: 80%</br>
 Staking Reward: 20%</br>
 Masternode collateral:  24000 PRX</br>
-Block Time: ~ 60 seconds</br>
-Maturity: 50 blocks</br>
-Minimum staking age: 6 hours</br>
+Block Time: ~ 65 seconds</br>
+Minimum staking age: 101 confirmations</br>
 
 # reward structure
 |***Block Phase*** |***Block***         | ***Reward*** | ***MN Reward*** | ***POS Reward*** | ***Collateral*** |
