@@ -473,8 +473,8 @@ void BlockExplorer::showEvent(QShowEvent*)
         updateNavButtons();
 
         if (!GetBoolArg("-txindex", false)) {
-            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (proxynode.conf).");
-            QMessageBox::warning(this, "Proxynode Core Blockchain Explorer", Warning, QMessageBox::Ok);
+            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (prx.conf).");
+            QMessageBox::warning(this, "prx Core Blockchain Explorer", Warning, QMessageBox::Ok);
         }
     }
 }

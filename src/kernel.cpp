@@ -12,6 +12,7 @@
 #include "script/interpreter.h"
 #include "timedata.h"
 #include "util.h"
+#include "spork.h"
 
 using namespace std;
 
@@ -295,12 +296,16 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlock blockFrom, const CTra
     //assign new variables to make it easier to read
     int64_t nValueIn = txPrev.vout[prevout.n].nValue;
     unsigned int nTimeBlockFrom = blockFrom.GetBlockTime();
+	 int nHeightStart = chainActive.Height();
 
     if (nTimeTx < nTimeBlockFrom) // Transaction timestamp violation
         return error("CheckStakeKernelHash() : nTime violation");
 
-    // if (nTimeBlockFrom + nStakeMinAge > nTimeTx) // Min age requirement
-    //     return error("CheckStakeKernelHash() : min age violation - nTimeBlockFrom=%d nStakeMinAge=%d nTimeTx=%d", nTimeBlockFrom, nStakeMinAge, nTimeTx);
+        unsigned int nStakeMinAgeCurrent = nStakeMinAge;
+	if (IsSporkActive(SPORK_17_STAKE_REQ_AG) && nTimeBlockFrom >= GetSporkValue(SPORK_17_STAKE_REQ_AG)) {
+		nStakeMinAgeCurrent = nStakeMinAge2;
+	}
+	
 
     //grab difficulty
     uint256 bnTargetPerCoinDay;
@@ -328,7 +333,6 @@ bool CheckStakeKernelHash(unsigned int nBits, const CBlock blockFrom, const CTra
     bool fSuccess = false;
     unsigned int nTryTime = 0;
     unsigned int i;
-    int nHeightStart = chainActive.Height();
     for (i = 0; i < (nHashDrift); i++) //iterate the hashing
     {
         //new block came in, move on

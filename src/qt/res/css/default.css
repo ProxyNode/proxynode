@@ -1,6 +1,6 @@
 /****************************************************************************************/
 /* Global color codes:                                                                  */
-/* Proxynode Blue:        #382f44 replace with #0020ae                                                          */
+/* prx Blue:        #382f44 replace with #0020ae                                                          */
 /* transparent-purple: #e7e9ef (for inactive backgrounds)   replaced with e7e9ef                            */
 /*                                                                                      */
 /* light-purple1:      #96a6f6 (main purple for white backgrounds) 96a6f6                     */
@@ -913,7 +913,7 @@ background-color:#ffffff;
 
 QLabel#labelOverviewHeaderRight {
 qproperty-alignment: 'AlignVCenter | AlignRight';
-background-image: url(':/images/proxynode_logo_horizontal');
+background-image: url(':/images/prx_logo_horizontal');
 background-repeat: no-repeat;
 }
 

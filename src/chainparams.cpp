@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017 The Proxynode developers
+// Copyright (c) 2017 The prx developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -121,11 +121,11 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // Proxynode: 
-        nTargetSpacing = 1 * 60;  // Proxynode:  
+        nTargetTimespan = 1 * 60; // prx: 
+        nTargetSpacing = 1 * 60;  // prx:  
         nMaturity = 20;
         nMasternodeCountDrift = 20;
-	nMaxMoneyOut = 500000000 * COIN;
+		nMaxMoneyOut = 500000000 * COIN;
 
         /** Height or Time Based Activations **/
         nLastPOWBlock = 200;
@@ -191,6 +191,8 @@ public:
         strMasternodePoolDummyAddress = "PXdUCCL4XKGSPRYNTFkZzXwpvt6zTpaFWf";
         nStartMasternodePayments = 1532008046; 
         nBudget_Fee_Confirmations = 6; // Number of confirmations for the finalization fee
+		nStakeMinConfirmations = 320;   // Required number of confirmations
+		nStakeMinAmount = 1 * COIN;    // Minimum required staking amount
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -220,8 +222,8 @@ public:
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // Proxynode: 1 day
-        nTargetSpacing = 2 * 60;  // Proxynode: 1 minute
+        nTargetTimespan = 1 * 60; // prx: 1 day
+        nTargetSpacing = 2 * 60;  // prx: 1 minute
         nLastPOWBlock = 200;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
@@ -240,15 +242,15 @@ public:
 
       //  vSeeds.push_back(CDNSSeedData("159.89.119.230", "159.89.119.230"));
         
-        // Testnet Proxynode addresses start with 'g'
+        // Testnet prx addresses start with 'g'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 98);
-        // Testnet Proxynode script addresses start with '5' or '6'
+        // Testnet prx script addresses start with '5' or '6'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 12);
         // Testnet private keys start with 'k'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 108);
-        // Testnet Proxynode BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet prx BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Testnet Proxynode BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet prx BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
         // Testnet bitcoin green BIP44 coin type is '1' (All coin's testnet default)
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
@@ -296,8 +298,8 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
-        nTargetTimespan = 24 * 60 * 60; // Proxynode: 1 day
-        nTargetSpacing = 2 * 60;        // Proxynode: 1 minutes
+        nTargetTimespan = 24 * 60 * 60; // prx: 1 day
+        nTargetSpacing = 2 * 60;        // prx: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1516926684;
         genesis.nBits = 0x207fffff;

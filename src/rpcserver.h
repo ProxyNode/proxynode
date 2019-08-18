@@ -96,7 +96,7 @@ public:
 };
 
 /**
- * Proxynode RPC command dispatcher.
+ * prx RPC command dispatcher.
  */
 class CRPCTable
 {

@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2017 The Proxynode developers
+// Copyright (c) 2017-2017 The prx developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -46,7 +46,7 @@ using namespace boost;
 using namespace std;
 
 #if defined(NDEBUG)
-#error "Proxynode cannot be compiled without assertions."
+#error "prx cannot be compiled without assertions."
 #endif
 
 // 6 comes from OPCODE (1) + vch.size() (1) + BIGNUM size (4)
@@ -79,6 +79,7 @@ unsigned int nCoinCacheSize = 5000;
 bool fAlerts = DEFAULT_ALERTS;
 
 unsigned int nStakeMinAge = 60 * 60;
+unsigned int nStakeMinAge2 = 3 * 60 * 60;
 int64_t nReserveBalance = 0;
 
 /** Fees smaller than this (in uPRX) are considered zero fee (for relaying and mining)
@@ -295,7 +296,7 @@ struct CNodeState {
     int nBlocksInFlight;
     //! Whether we consider this a preferred download peer.
     bool fPreferredDownload;
-
+	CNodeBlocks nodeBlocks;
     CNodeState()
     {
         fCurrentlyConnected = false;
@@ -1667,7 +1668,7 @@ int64_t GetBlockValue(int nHeight)
         nSubsidy = 10 * COIN;
     }
 else {
-        nSubsidy = 100 * COIN; //This should be 5. Not immediately impacting so amendment postponed.
+        nSubsidy = 100 * COIN;
     }
 
 
@@ -2083,7 +2084,7 @@ static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck()
 {
-    RenameThread("Proxynode-scriptch");
+    RenameThread("prx-scriptch");
     scriptcheckqueue.Thread();
 }
 
@@ -3167,6 +3168,39 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         for (unsigned int i = 2; i < block.vtx.size(); i++)
             if (block.vtx[i].IsCoinStake())
                 return state.DoS(100, error("CheckBlock() : more than one coinstake"));
+			
+					if (IsSporkActive(SPORK_17_STAKE_REQ_AG) && block.GetBlockTime() >= GetSporkValue(SPORK_17_STAKE_REQ_AG)) {
+
+            // Check for coin age.
+            // First try finding the previous transaction in database.
+            CTransaction txPrev;
+            uint256 hashBlockPrev;
+            if (!GetTransaction(block.vtx[1].vin[0].prevout.hash, txPrev, hashBlockPrev, true))
+                return state.DoS(100, error("CheckBlock() : stake failed to find vin transaction"));
+            // Find block in map.
+            CBlockIndex* pindex = NULL;
+            BlockMap::iterator it = mapBlockIndex.find(hashBlockPrev);
+            if (it != mapBlockIndex.end())
+                pindex = it->second;
+            else
+                return state.DoS(100, error("CheckBlock() : stake failed to find block index"));
+
+            // Check block time vs stake age requirement.
+            if (pindex->GetBlockHeader().nTime + nStakeMinAge2 > GetAdjustedTime())
+                return state.DoS(100, error("CheckBlock() : stake under min. stake age"));
+
+            // Check that the prev. stake block has required confirmations by height.
+            if (chainActive.Tip()->nHeight - pindex->nHeight < Params().Stake_MinConfirmations())
+                return state.DoS(100, error("CheckBlock() : stake under min. required confirmations"));
+
+        }
+
+        if (IsSporkActive(SPORK_18_STAKE_REQ_SZ) && block.GetBlockTime() >= GetSporkValue(SPORK_18_STAKE_REQ_SZ)) {
+            // Check for minimum value.
+            if (block.vtx[1].vout[1].nValue < Params().Stake_MinAmount())
+                return state.DoS(100, error("CheckBlock() : stake under min. stake value"));
+        }
+			
     }
 
     // ----------- swiftTX transaction scanning -----------
@@ -3476,6 +3510,102 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 
     int nHeight = pindex->nHeight;
 	
+	int splitHeight = -1;
+	
+	    if (block.IsProofOfStake()) {
+        LOCK(cs_main);
+		// Blocks arrives in order, so if prev block is not the tip then we are on a fork.
+        // Extra info: duplicated blocks are skipping this checks, so we don't have to worry about those here.
+        bool isBlockFromFork = pindexPrev != nullptr && chainActive.Tip() != pindexPrev;
+
+        // Coin stake
+        CTransaction &stakeTxIn = block.vtx[1];
+
+        // Inputs
+        std::vector<CTxIn> inputs;
+
+        for (const CTxIn& stakeIn : stakeTxIn.vin)
+            inputs.push_back(stakeIn);
+
+       const bool hasInputs = !inputs.empty();
+
+        for (const CTransaction& tx : block.vtx) {
+            for (const CTxIn& in: tx.vin) {
+                if (tx.IsCoinStake()) continue;
+                if (hasInputs)
+                    // Check if coinstake input is double spent inside the same block
+                    for (const CTxIn& pivIn : inputs) {
+                        if (pivIn.prevout == in.prevout) {
+                            // double spent coinstake input inside block
+                            return error("%s: double spent coinstake input inside block", __func__);
+                        }
+                    }
+            }
+        }
+
+        // Check whether is a fork or not
+        if (isBlockFromFork) {
+            // Start at the block we're adding on to
+            CBlockIndex *prev = pindexPrev;
+
+            int readBlock = 0;
+            CBlock bl;
+
+            // Go backwards on the forked chain up to the split
+            do {
+                // Check if the forked chain is longer than the max reorg limit
+                if (readBlock == Params().MaxReorganizationDepth()){
+                    // TODO: Remove this chain from disk.
+                    return error("%s: forked chain longer than maximum reorg limit", __func__);
+                }
+
+                if (!ReadBlockFromDisk(bl, prev))
+                    // Previous block not on disk
+                    return error("%s: previous block %s not on disk", __func__, prev->GetBlockHash().GetHex());
+
+                // Increase amount of read blocks
+                readBlock++;
+                // Loop through every input from said block
+                for (const CTransaction& t : bl.vtx) {
+                    for (const CTxIn& in: t.vin) {
+                        // Loop through every input of the staking tx
+                        for (const CTxIn& stakeIn : inputs) {
+                            // Check if it's already spent
+                            if (hasInputs) {
+                                if (stakeIn.prevout == in.prevout) {
+                                    return state.DoS(100, error("%s: input already spent on a previous block", __func__));
+                                }
+                            }
+                        }
+                    }
+                }
+
+                prev = prev->pprev;
+
+            } while (!chainActive.Contains(prev));
+
+            // Split height
+            splitHeight = prev->nHeight;
+        }
+        // check if the inputs were spent on the main chain
+        const CCoinsViewCache coins(pcoinsTip);
+        for (const CTxIn& in: stakeTxIn.vin) {
+            const CCoins* coin = coins.AccessCoins(in.prevout.hash);
+
+            if (!coin && !isBlockFromFork) {
+                // No coins on the main chain
+                return error("%s: coin stake inputs not available on main chain, received height %d vs current %d", __func__, nHeight, chainActive.Height());
+            }
+            if (coin && !coin->IsAvailable(in.prevout.n)) {
+                // If this is not available get the height of the spent and validate it with the forked height
+                // Check if this occurred before the chain split
+                if (!(isBlockFromFork && coin->nHeight > splitHeight)) {
+                    // Coins not available
+                    return error("%s: coin stake inputs already spent in main chain", __func__);
+                }
+            }
+        }
+    }
 
 	if (block.IsProofOfStake()) {
         LOCK(cs_main);
@@ -3646,9 +3776,30 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
             mapBlockSource[pindex->GetBlockHash ()] = pfrom->GetId ();
         }
         CheckBlockIndex ();
-        if (!ret)
-            return error ("%s : AcceptBlock FAILED", __func__);
-    }
+
+        if (!ret) {
+            // Check spamming
+            if (pindex && pfrom && GetBoolArg("-blockspamfilter", DEFAULT_BLOCK_SPAM_FILTER)) {
+                CNodeState *nodestate = State(pfrom->GetId());
+                if (nodestate != nullptr) {
+                    nodestate->nodeBlocks.BlockReceived(pindex->nHeight);
+                    // UpdateState will return false if the node is attacking us or update the score and return true.
+                    bool nodeStatus = nodestate->nodeBlocks.UpdateState(state);
+                    int nDoS = 0;
+                    if (state.IsInvalid(nDoS)) {
+                        if (nDoS > 0)
+                            Misbehaving(pfrom->GetId(), nDoS);
+                        nodeStatus = false;
+                    }
+                    if (!nodeStatus)
+                        return error("%s : AcceptBlock FAILED - block spam protection", __func__);
+                }
+
+            }
+            return error("%s : AcceptBlock FAILED", __func__);
+        }
+    
+	}
 
     if (!ActivateBestChain(state, pblock, checked))
         return error("%s : ActivateBestChain failed", __func__);
@@ -4039,6 +4190,24 @@ bool CVerifyDB::VerifyDB(CCoinsView* coinsview, int nCheckLevel, int nCheckDepth
             if (!ConnectBlock(block, state, pindex, coins, false))
                 return error("VerifyDB() : *** found unconnectable block at %d, hash=%s", pindex->nHeight, pindex->GetBlockHash().ToString());
         }
+    }
+
+	    // Validate & Enforce last checkpoint
+
+    CBlockIndex* pindex = chainActive.Tip();
+    int twinsLastCheckpoint = 0;
+
+    if (pindex)
+      twinsLastCheckpoint = Checkpoints::GetClosestCheckpoint(pindex->nHeight);
+
+    if (twinsLastCheckpoint) {
+      LogPrintf("Validating Last Checkpoint (current heigh=%s last checkpoint heigh=%s)...", pindex->nHeight, twinsLastCheckpoint);
+      if (!Checkpoints::CheckBlock(twinsLastCheckpoint,chainActive[twinsLastCheckpoint]->GetBlockHash())) {
+        LogPrintf("FAILED !!!\n");
+        return error("VerifyDB() : *** Checkpoint validation at block %s FAILED", twinsLastCheckpoint);
+      } else {
+        LogPrintf("Passed\n");
+      }
     }
 
     LogPrintf("No coin database inconsistencies in last %i blocks (%i transactions)\n", chainActive.Height() - pindexState->nHeight, nGoodTransactions);
@@ -5897,3 +6066,57 @@ public:
         mapOrphanTransactionsByPrev.clear();
     }
 } instance_of_cmaincleanup;
+
+bool CNodeBlocks::BlockReceived(int nHeight)
+
+
+
+{
+    if(nHeight > 0 && maxSize && maxAvg) {
+        AddPoint(nHeight);
+        return true;
+    }
+    return false;
+}
+
+bool CNodeBlocks::UpdateState(CValidationState& state)
+
+{
+    // No Blocks
+    size_t size = points.size();
+    if (size == 0)
+        return true;
+
+    // Compute the number of the received blocks
+    size_t nBlocks = 0;
+    for (auto point : points)
+        nBlocks += point.second;
+    // Compute the average value per height
+    double nAvgValue = (double)nBlocks / size;
+    // Ban the node if try to spam
+    bool banNode = (nAvgValue >= 1.5 * maxAvg && size >= maxAvg) ||
+                    (nAvgValue >= maxAvg && nBlocks >= maxSize) ||
+                    (nBlocks >= maxSize * 3);
+    if (banNode) {
+        // Clear the points and ban the node
+        points.clear();
+        return state.DoS(100, error("block-spam ban node for sending spam"));
+    }
+
+    return true;
+}
+
+void CNodeBlocks::AddPoint(int nHeight)
+{
+    // Remove the last element in the list
+    if (points.size() == maxSize)
+        points.erase(points.begin());
+
+    // Add the point to the list
+    int occurrence = 0;
+    auto mi = points.find(nHeight);
+    if (mi != points.end())
+        occurrence = (*mi).second;
+    occurrence++;
+    points[nHeight] = occurrence;
+}

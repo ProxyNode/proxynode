@@ -168,7 +168,7 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../proxynode.qrc"/>
+  <include location="../prx.qrc"/>
  </resources>
  <connections/>
 </ui>

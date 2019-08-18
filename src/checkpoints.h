@@ -35,6 +35,8 @@ int GetTotalBlocksEstimate();
 //! Returns last CBlockIndex* in mapBlockIndex that is a checkpoint
 CBlockIndex* GetLastCheckpoint();
 
+int GetClosestCheckpoint(int blocknum = 0);
+
 double GuessVerificationProgress(CBlockIndex* pindex, bool fSigchecks = true);
 
 extern bool fEnabled;

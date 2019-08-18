@@ -72,15 +72,15 @@ bin_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += proxynoded
+  bin_PROGRAMS += prxd
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += proxynode-cli proxynode-tx
+  bin_PROGRAMS += prx-cli prx-tx
 endif
 
 .PHONY: FORCE
-# proxynode core #
+# prx core #
 BITCOIN_CORE_H = \
   bignum.h \
   activemasternode.h \
@@ -183,7 +183,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between proxynoded and proxynode-qt
+# server: shared between prxd and prx-qt
 libbitcoin_server_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_SOURCES = \
   addrman.cpp \
@@ -228,7 +228,7 @@ libbitcoin_zmq_a_SOURCES = \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between proxynoded and proxynode-qt, but only linked
+# wallet: shared between prxd and prx-qt, but only linked
 # when wallet enabled
 
 libbitcoin_wallet_a_CFLAGS = -fPIC
@@ -300,7 +300,7 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/sph_skein.h \
   crypto/sph_types.h
 
-# common: shared between proxynoded, and proxynode-qt and non-server tools
+# common: shared between prxd, and prx-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_common_a_SOURCES = \
   allocators.cpp \
@@ -358,7 +358,7 @@ libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 libbitcoin_util_a_SOURCES += compat/glibcxx_compat.cpp
 endif
 
-# cli: shared between proxynode-cli and proxynode-qt
+# cli: shared between prx-cli and prx-qt
 libbitcoin_cli_a_CPPFLAGS = $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_SOURCES = \
   rpcclient.cpp \
@@ -368,7 +368,7 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-proxynoded_LDADD = \
+prxd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBUNIVALUE) \
@@ -379,26 +379,26 @@ proxynoded_LDADD = \
   $(LIBSECP256K1)
 
 if ENABLE_ZMQ
-proxynoded_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+prxd_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-proxynoded_LDADD += libbitcoin_wallet.a
+prxd_LDADD += libbitcoin_wallet.a
 endif
-proxynoded_SOURCES = proxynoded.cpp
+prxd_SOURCES = prxd.cpp
 #
 
 if TARGET_WINDOWS
-proxynoded_SOURCES += proxynoded-res.rc
+prxd_SOURCES += prxd-res.rc
 endif
 
-proxynoded_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-proxynoded_CPPFLAGS = $(BITCOIN_INCLUDES)
-proxynoded_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+prxd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+prxd_CPPFLAGS = $(BITCOIN_INCLUDES)
+prxd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 
-# proxynode-cli binary #
-proxynode_cli_LDADD = \
+# prx-cli binary #
+prx_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
@@ -407,14 +407,14 @@ proxynode_cli_LDADD = \
   $(CRYPTO_LIBS) \
   $(EVENT_LIBS)
 
-proxynode_cli_SOURCES = \
-  proxynode-cli.cpp
+prx_cli_SOURCES = \
+  prx-cli.cpp
 
-proxynode_cli_CPPFLAGS = $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+prx_cli_CPPFLAGS = $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
 #
 
-# proxynode-tx binary #
-proxynode_tx_LDADD = \
+# prx-tx binary #
+prx_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -423,15 +423,15 @@ proxynode_tx_LDADD = \
   $(BOOST_LIBS) \
   $(CRYPTO_LIBS)
 
-proxynode_tx_SOURCES = proxynode-tx.cpp
-proxynode_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
+prx_tx_SOURCES = prx-tx.cpp
+prx_tx_CPPFLAGS = $(BITCOIN_INCLUDES)
 #
-proxynode_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+prx_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-proxynode_cli_SOURCES += proxynode-cli-res.rc
+prx_cli_SOURCES += prx-cli-res.rc
 endif
-proxynode_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+prx_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if BUILD_BITCOIN_LIBS
 include_HEADERS = script/bitcoinconsensus.h
