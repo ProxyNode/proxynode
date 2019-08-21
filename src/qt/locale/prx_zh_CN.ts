@@ -594,7 +594,7 @@
         <translation>标签工具栏</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx 核心</translation>
     </message>
     <message>
@@ -614,11 +614,11 @@
         <translation>浏览主节点</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
+        <source>&amp;About Proxynode Core</source>
         <translation>&amp;关于prx核心</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
+        <source>Show information about Proxynode Core</source>
         <translation>显示prx核心的相关信息</translation>
     </message>
     <message>
@@ -674,11 +674,11 @@
         <translation>区块浏览窗口</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
-        <translation>显示prx Core帮助信息以获取可能的prx命令行选项的列表</translation>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
+        <translation>显示Proxynode Core帮助信息以获取可能的prx命令行选项的列表</translation>
     </message>
     <message>
-        <source>prx Core client</source>
+        <source>Proxynode Core client</source>
         <translation>prx核心客户端</translation>
     </message>
     <message>
@@ -808,14 +808,14 @@ Address: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx 核心</translation>
     </message>
     </context>
 <context>
     <name>Intro</name>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx 核心</translation>
     </message>
     <message>
@@ -1389,7 +1389,7 @@ Address: %4
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx 核心</translation>
     </message>
     </context>
@@ -1475,8 +1475,8 @@ Address: %4
         <translation>在收到相关警报时执行命令，或者看到一个很长的分叉（cmd中的%s被消息替换）</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong prx Core will not work properly.</source>
-        <translation>注意：请检查您的电脑的日期和时间是否正确！ 如果您的时间设置不正确，prx Core将无法正常工作。</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Proxynode Core will not work properly.</source>
+        <translation>注意：请检查您的电脑的日期和时间是否正确！ 如果您的时间设置不正确，Proxynode Core将无法正常工作。</translation>
     </message>
     <message>
         <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>

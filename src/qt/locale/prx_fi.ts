@@ -587,7 +587,7 @@ Syötä salausavain laatikon keskelle. Paina salaa tuottaaksesi salatun yksityis
         <translation>&amp;Apua</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx Ydin</translation>
     </message>
     <message>
@@ -607,11 +607,11 @@ Syötä salausavain laatikon keskelle. Paina salaa tuottaaksesi salatun yksityis
         <translation>Selaa masternodeja</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
-        <translation>prx Core &amp;ytimestä</translation>
+        <source>&amp;About Proxynode Core</source>
+        <translation>Proxynode Core &amp;ytimestä</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
+        <source>Show information about Proxynode Core</source>
         <translation>Näytä tietoja prx Ytimestä</translation>
     </message>
     <message>
@@ -667,11 +667,11 @@ Syötä salausavain laatikon keskelle. Paina salaa tuottaaksesi salatun yksityis
         <translation>Lohkon tutkija näkymä</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
         <translation>Näytä prx Ydin apuviesti saadaksesi lista mahdollisista prx komentolinja komennoista.</translation>
     </message>
     <message>
-        <source>prx Core client</source>
+        <source>Proxynode Core client</source>
         <translation>prx Ydin asiakasohjelma</translation>
     </message>
     <message>
@@ -930,7 +930,7 @@ Syötä salausavain laatikon keskelle. Paina salaa tuottaaksesi salatun yksityis
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx Ydin</translation>
     </message>
     <message>
@@ -949,11 +949,11 @@ Syötä salausavain laatikon keskelle. Paina salaa tuottaaksesi salatun yksityis
         <translation>Tervetuloa</translation>
     </message>
     <message>
-        <source>Welcome to prx Core.</source>
+        <source>Welcome to Proxynode Core.</source>
         <translation>Tervetuloa prx Ytimeen.</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx Ydin</translation>
     </message>
     <message>
@@ -1918,7 +1918,7 @@ Please check the address and try again.</source>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>prx Core is shutting down...</source>
+        <source>Proxynode Core is shutting down...</source>
         <translation>prx core sammuu...</translation>
     </message>
     <message>
@@ -2060,7 +2060,7 @@ Please check the address and try again.</source>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx Ydin</translation>
     </message>
     <message>
@@ -2080,7 +2080,7 @@ Please check the address and try again.</source>
         <translation>PIVX core kehittäjät</translation>
     </message>
     <message>
-        <source>The prx Core developers</source>
+        <source>The Proxynode Core developers</source>
         <translation>prx core kehittäjät</translation>
     </message>
     <message>
@@ -2434,8 +2434,8 @@ Please check the address and try again.</source>
         <translation>Virhe ladattaessa wallet.dat tiedostoa: Lompakko korruptoitunut</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of prx Core</source>
-        <translation>Virhe ladattaessa wallet.dat tiedostoa: Lompakko vaatii uudemman version prx Coresta</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Proxynode Core</source>
+        <translation>Virhe ladattaessa wallet.dat tiedostoa: Lompakko vaatii uudemman version Proxynode Coresta</translation>
     </message>
     <message>
         <source>Error reading from database, shutting down.</source>

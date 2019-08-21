@@ -582,8 +582,8 @@
         <translation>Tabs 工具列</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Send coins to a PRX address</source>
@@ -602,12 +602,12 @@
         <translation>瀏覽 Masternodes</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
-        <translation>&amp;關於 prx Core</translation>
+        <source>&amp;About Proxynode Core</source>
+        <translation>&amp;關於 Proxynode Core</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
-        <translation>顯示 prx Core 相關資訊</translation>
+        <source>Show information about Proxynode Core</source>
+        <translation>顯示 Proxynode Core 相關資訊</translation>
     </message>
     <message>
         <source>Modify configuration options for prx</source>
@@ -662,12 +662,12 @@
         <translation>區塊鏈瀏覽視窗</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
-        <translation>顯示 prx Core 幫助訊息以取得 prx 命令列表選項</translation>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
+        <translation>顯示 Proxynode Core 幫助訊息以取得 prx 命令列表選項</translation>
     </message>
     <message>
-        <source>prx Core client</source>
-        <translation>prx Core 客戶端</translation>
+        <source>Proxynode Core client</source>
+        <translation>Proxynode Core 客戶端</translation>
     </message>
     </context>
 <context>
@@ -696,15 +696,15 @@
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     </context>
 <context>
     <name>Intro</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     </context>
 <context>
@@ -885,8 +885,8 @@
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     </context>
 <context>

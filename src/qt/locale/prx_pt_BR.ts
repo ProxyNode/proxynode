@@ -582,8 +582,8 @@
         <translation>Ferramentas de abas</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Send coins to a PRX address</source>
@@ -602,12 +602,12 @@
         <translation>Procurar masternodes</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
-        <translation>&amp;Sobre o prx Core</translation>
+        <source>&amp;About Proxynode Core</source>
+        <translation>&amp;Sobre o Proxynode Core</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
-        <translation>Mostra informação sobre o prx Core</translation>
+        <source>Show information about Proxynode Core</source>
+        <translation>Mostra informação sobre o Proxynode Core</translation>
     </message>
     <message>
         <source>Modify configuration options for prx</source>
@@ -662,11 +662,11 @@
         <translation>Janela de exploração de blocos</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
-        <translation>Mostra a ajuda da prx Core para receber uma lista com possíveis opções de linha de comando prx</translation>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
+        <translation>Mostra a ajuda da Proxynode Core para receber uma lista com possíveis opções de linha de comando prx</translation>
     </message>
     <message>
-        <source>prx Core client</source>
+        <source>Proxynode Core client</source>
         <translation>Cliente Core prx</translation>
     </message>
     <message>
@@ -1125,16 +1125,16 @@ MultiSend: %1</translation>
         <translation>versão</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About prx Core</source>
-        <translation>Sobre o prx Core</translation>
+        <source>About Proxynode Core</source>
+        <translation>Sobre o Proxynode Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1168,16 +1168,16 @@ MultiSend: %1</translation>
         <translation>Bem-vindo</translation>
     </message>
     <message>
-        <source>Welcome to prx Core.</source>
-        <translation>Bem-vindo ao prx Core.</translation>
+        <source>Welcome to Proxynode Core.</source>
+        <translation>Bem-vindo ao Proxynode Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where prx Core will store its data.</source>
-        <translation>Como essa é a primeira vez que o programa é utilizado, você pode escolher onde prx Core vai armazenar os seus dados.</translation>
+        <source>As this is the first time the program is launched, you can choose where Proxynode Core will store its data.</source>
+        <translation>Como essa é a primeira vez que o programa é utilizado, você pode escolher onde Proxynode Core vai armazenar os seus dados.</translation>
     </message>
     <message>
-        <source>prx Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>prx Core vai baixar e armazenar uma cópia da blockchain prx. Pelo menos %1GB de informação será armazenado neste diretório e irá aumentar com o tempo. A carteira também será armazenada neste diretório.</translation>
+        <source>Proxynode Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Proxynode Core vai baixar e armazenar uma cópia da blockchain prx. Pelo menos %1GB de informação será armazenado neste diretório e irá aumentar com o tempo. A carteira também será armazenada neste diretório.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1188,8 +1188,8 @@ MultiSend: %1</translation>
         <translation>Usar um diretório personalizado de dados:</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -2523,8 +2523,8 @@ Favor verificar o endereço e tente novamente.</translation>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>prx Core is shutting down...</source>
-        <translation>prx Core está desligando...</translation>
+        <source>Proxynode Core is shutting down...</source>
+        <translation>Proxynode Core está desligando...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -2665,8 +2665,8 @@ Favor verificar o endereço e tente novamente.</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -2685,8 +2685,8 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Os desenvolvedores do PIVX Core</translation>
     </message>
     <message>
-        <source>The prx Core developers</source>
-        <translation>Os desenvolvedores do prx Core</translation>
+        <source>The Proxynode Core developers</source>
+        <translation>Os desenvolvedores do Proxynode Core</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -3267,7 +3267,7 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Aviso: -paytxfee está definido como muito alto! Está e a taxa de transação que você irá pagar se enviar uma transação.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong prx Core will not work properly.</source>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Proxynode Core will not work properly.</source>
         <translation>Aviso: Favor verificar se o horário e data de seu computador estão corretos! Se o seu relógio estiver errado o Core prx não vai funcionar corretamente.</translation>
     </message>
     <message>
@@ -3347,8 +3347,8 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Todos os direitos reservados (C) 2015-%i aos Desenvolvedores do PIVX Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The prx Core Developers</source>
-        <translation>Todos os direitos reservados (C) 2017-%i aos Desenvolvedores do prx Core</translation>
+        <source>Copyright (C) 2017-%i The Proxynode Core Developers</source>
+        <translation>Todos os direitos reservados (C) 2017-%i aos Desenvolvedores do Proxynode Core</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -3399,8 +3399,8 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Erro no carregamento da wallet.dat: Carteira corrompida</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of prx Core</source>
-        <translation>Erro ao carregar wallet.dat: A Carteira requer uma nova versão da prx Core</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Proxynode Core</source>
+        <translation>Erro ao carregar wallet.dat: A Carteira requer uma nova versão da Proxynode Core</translation>
     </message>
     <message>
         <source>Error opening block database</source>
@@ -3847,8 +3847,8 @@ Favor verificar o endereço e tente novamente.</translation>
         <translation>Carteira está travada.</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart prx Core to complete</source>
-        <translation>A carteira precisa ser reescrita: reinicia o prx Core para completar</translation>
+        <source>Wallet needed to be rewritten: restart Proxynode Core to complete</source>
+        <translation>A carteira precisa ser reescrita: reinicia o Proxynode Core para completar</translation>
     </message>
     <message>
         <source>Wallet options:</source>

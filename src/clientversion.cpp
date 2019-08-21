@@ -13,7 +13,7 @@
  * for both prxd and prx-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("prx");
+const std::string CLIENT_NAME("Proxynode Core");
 
 /**
  * Client version number

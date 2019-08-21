@@ -590,7 +590,7 @@
         <translation>Tabblad werkbalk</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx Kern</translation>
     </message>
     <message>
@@ -610,11 +610,11 @@
         <translation>Bekijk masternodes</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
+        <source>&amp;About Proxynode Core</source>
         <translation>&amp;Over prx Kern</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
+        <source>Show information about Proxynode Core</source>
         <translation>Toon informatie over prx Kern</translation>
     </message>
     <message>
@@ -670,8 +670,8 @@
         <translation>Block verkenner venster</translation>
     </message>
     <message>
-        <source>prx Core client</source>
-        <translation>prx Core client</translation>
+        <source>Proxynode Core client</source>
+        <translation>Proxynode Core client</translation>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to prx network</source>
@@ -1064,7 +1064,7 @@ MultiSend: %1</translation>
         <translation>versie</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx Kern</translation>
     </message>
     <message>
@@ -1072,8 +1072,8 @@ MultiSend: %1</translation>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About prx Core</source>
-        <translation>Over prx Core</translation>
+        <source>About Proxynode Core</source>
+        <translation>Over Proxynode Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1103,15 +1103,15 @@ MultiSend: %1</translation>
         <translation>Welkom</translation>
     </message>
     <message>
-        <source>Welcome to prx Core.</source>
-        <translation>Welkom bij prx Core</translation>
+        <source>Welcome to Proxynode Core.</source>
+        <translation>Welkom bij Proxynode Core</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
         <translation>Gebruik de standaard datafolder </translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx Kern</translation>
     </message>
     <message>
@@ -2081,8 +2081,8 @@ MultiSend: %1</translation>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>prx Core is shutting down...</source>
-        <translation>prx Core is aan het afsluiten...</translation>
+        <source>Proxynode Core is shutting down...</source>
+        <translation>Proxynode Core is aan het afsluiten...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -2211,7 +2211,7 @@ MultiSend: %1</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx Kern</translation>
     </message>
     <message>
@@ -2231,8 +2231,8 @@ MultiSend: %1</translation>
         <translation>De PIVX Core ontwikkelaars</translation>
     </message>
     <message>
-        <source>The prx Core developers</source>
-        <translation>De prx Core ontwikkelaars</translation>
+        <source>The Proxynode Core developers</source>
+        <translation>De Proxynode Core ontwikkelaars</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -2625,8 +2625,8 @@ MultiSend: %1</translation>
         <translation>Copyright (C) 2015-%i The PIVX Core Ontwikkelaars</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The prx Core Developers</source>
-        <translation>Copyright (C) 2017-%i The prx Core Ontwikkelaars</translation>
+        <source>Copyright (C) 2017-%i The Proxynode Core Developers</source>
+        <translation>Copyright (C) 2017-%i The Proxynode Core Ontwikkelaars</translation>
     </message>
     <message>
         <source>Debugging/Testing options:</source>

@@ -590,8 +590,8 @@
         <translation>Панель вкладок</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Send coins to a PRX address</source>
@@ -610,12 +610,12 @@
         <translation>Обзор мастернод</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
-        <translation>&amp;О prx Core</translation>
+        <source>&amp;About Proxynode Core</source>
+        <translation>&amp;О Proxynode Core</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
-        <translation>Показать информацию о prx Core</translation>
+        <source>Show information about Proxynode Core</source>
+        <translation>Показать информацию о Proxynode Core</translation>
     </message>
     <message>
         <source>Modify configuration options for prx</source>
@@ -670,12 +670,12 @@
         <translation>Окно обзора блока</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
         <translation>Смотрите помощь к программе, чтобы получить документацию ко всем возможным опциям комманды prx</translation>
     </message>
     <message>
-        <source>prx Core client</source>
-        <translation>Клиент prx Core</translation>
+        <source>Proxynode Core client</source>
+        <translation>Клиент Proxynode Core</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -1136,16 +1136,16 @@ MultiSend: %1</translation>
         <translation>версия</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-бит)</translation>
     </message>
     <message>
-        <source>About prx Core</source>
-        <translation>О prx Core</translation>
+        <source>About Proxynode Core</source>
+        <translation>О Proxynode Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1191,16 +1191,16 @@ MultiSend: %1</translation>
         <translation>Добро пожаловать</translation>
     </message>
     <message>
-        <source>Welcome to prx Core.</source>
-        <translation>Добро пожаловать в prx Core.</translation>
+        <source>Welcome to Proxynode Core.</source>
+        <translation>Добро пожаловать в Proxynode Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where prx Core will store its data.</source>
-        <translation>Поскольку это первый запуск программы, вы можете выбрать, где будут храниться данные prx Core.</translation>
+        <source>As this is the first time the program is launched, you can choose where Proxynode Core will store its data.</source>
+        <translation>Поскольку это первый запуск программы, вы можете выбрать, где будут храниться данные Proxynode Core.</translation>
     </message>
     <message>
-        <source>prx Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>prx Core загрузит и сохранит копию цепочки блоков prx. Каталог будет занимать около %1GB и со временем размер будет увеличиваться. Кроме того, в этом каталоге будет храниться кошелек.</translation>
+        <source>Proxynode Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Proxynode Core загрузит и сохранит копию цепочки блоков prx. Каталог будет занимать около %1GB и со временем размер будет увеличиваться. Кроме того, в этом каталоге будет храниться кошелек.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1211,8 +1211,8 @@ MultiSend: %1</translation>
         <translation>Использовать другой каталог данных:</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -2540,8 +2540,8 @@ Please check the address and try again.</source>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>prx Core is shutting down...</source>
-        <translation>prx Core выключается...</translation>
+        <source>Proxynode Core is shutting down...</source>
+        <translation>Proxynode Core выключается...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -2630,8 +2630,8 @@ Please check the address and try again.</source>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -2650,8 +2650,8 @@ Please check the address and try again.</source>
         <translation>Разработчики PIVX Core</translation>
     </message>
     <message>
-        <source>The prx Core developers</source>
-        <translation>Разработчики prx Core</translation>
+        <source>The Proxynode Core developers</source>
+        <translation>Разработчики Proxynode Core</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -2940,8 +2940,8 @@ Please check the address and try again.</source>
         <translation>Copyright (C) 2015-%i Разработчики PIVX Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The prx Core Developers</source>
-        <translation>Copyright (C) 2017-%i Разработчики prx Core</translation>
+        <source>Copyright (C) 2017-%i The Proxynode Core Developers</source>
+        <translation>Copyright (C) 2017-%i Разработчики Proxynode Core</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>

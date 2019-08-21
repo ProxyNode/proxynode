@@ -598,7 +598,7 @@
         <translation>Herramienta de pestañas</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>Núcleo prx</translation>
     </message>
     <message>
@@ -622,11 +622,11 @@
         <translation>Explorar nodos maestros</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
+        <source>&amp;About Proxynode Core</source>
         <translation>&amp;Sobre el núcleo de prx</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
+        <source>Show information about Proxynode Core</source>
         <translation>Mostrar información sobre el núcleo de prx</translation>
     </message>
     <message>
@@ -682,12 +682,12 @@
         <translation>Ventana del explorador de bloques</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
-        <translation>Mostrar la ayuda de prx Core para obtener una lista de posibles opciones en línea de comandos</translation>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
+        <translation>Mostrar la ayuda de Proxynode Core para obtener una lista de posibles opciones en línea de comandos</translation>
     </message>
     <message>
-        <source>prx Core client</source>
-        <translation>Cliente prx Core</translation>
+        <source>Proxynode Core client</source>
+        <translation>Cliente Proxynode Core</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -1156,7 +1156,7 @@ MultiEnvío: %1</translation>
         <translation>versión</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>Núcleo prx</translation>
     </message>
     <message>
@@ -1164,8 +1164,8 @@ MultiEnvío: %1</translation>
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About prx Core</source>
-        <translation>Acerca de prx Core</translation>
+        <source>About Proxynode Core</source>
+        <translation>Acerca de Proxynode Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1211,16 +1211,16 @@ MultiEnvío: %1</translation>
         <translation>Bienvenido/a</translation>
     </message>
     <message>
-        <source>Welcome to prx Core.</source>
-        <translation>Bienvenido/a a prx Core.</translation>
+        <source>Welcome to Proxynode Core.</source>
+        <translation>Bienvenido/a a Proxynode Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where prx Core will store its data.</source>
-        <translation>Al ser la primera vez que se inicia el programa, usted puede elegir dónde guardará prx Core sus datos.</translation>
+        <source>As this is the first time the program is launched, you can choose where Proxynode Core will store its data.</source>
+        <translation>Al ser la primera vez que se inicia el programa, usted puede elegir dónde guardará Proxynode Core sus datos.</translation>
     </message>
     <message>
-        <source>prx Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>prx Core descargará y guardará una copia de la cadena de bloques prx. Por lo menos %1GB de datos serán guardados en esta carpeta, y crecerá con el tiempo. El monedero también se guardará en esta carpeta.</translation>
+        <source>Proxynode Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Proxynode Core descargará y guardará una copia de la cadena de bloques prx. Por lo menos %1GB de datos serán guardados en esta carpeta, y crecerá con el tiempo. El monedero también se guardará en esta carpeta.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1231,7 +1231,7 @@ MultiEnvío: %1</translation>
         <translation>Usar una carpeta de datos personalizada:</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>Núcleo prx</translation>
     </message>
     <message>
@@ -2839,7 +2839,7 @@ Por favor compruebe la dirección e inténtelo de nuevo.</translation>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>prx Core is shutting down...</source>
+        <source>Proxynode Core is shutting down...</source>
         <translation>El programa prx se está cerrando...</translation>
     </message>
     <message>
@@ -2989,7 +2989,7 @@ Por favor compruebe la dirección e inténtelo de nuevo.</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>Núcleo prx</translation>
     </message>
     <message>
@@ -3009,8 +3009,8 @@ Por favor compruebe la dirección e inténtelo de nuevo.</translation>
         <translation>Los desarrolladores de PIVX Core</translation>
     </message>
     <message>
-        <source>The prx Core developers</source>
-        <translation>Los desarrolladores de prx Core</translation>
+        <source>The Proxynode Core developers</source>
+        <translation>Los desarrolladores de Proxynode Core</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -3567,8 +3567,8 @@ Por favor compruebe la dirección e inténtelo de nuevo.</translation>
         <translation>Escuchar únicamente a la tarjeta de red indicada para conexiones JSON-RPC. Use la notación [host]:puerto para IPv6. Esta opción puede ser especificada varias veces (por defecto: escuchar en todas las tarjetas de red)</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. prx Core is probably already running.</source>
-        <translation>No se puede obtener un bloqueo sobre el directorio de datos %s. prx Core esta probablemente en ejecución.</translation>
+        <source>Cannot obtain a lock on data directory %s. Proxynode Core is probably already running.</source>
+        <translation>No se puede obtener un bloqueo sobre el directorio de datos %s. Proxynode Core esta probablemente en ejecución.</translation>
     </message>
     <message>
         <source>Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)</source>
@@ -3747,8 +3747,8 @@ por ejemplo: alertnotify=echo %%s | mail -s "prx Alert" admin@foo.com
 </translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. prx Core is probably already running.</source>
-        <translation>Imposible conectar a %s en esta computadora. Es probable que prx Core ya este corriendo.</translation>
+        <source>Unable to bind to %s on this computer. Proxynode Core is probably already running.</source>
+        <translation>Imposible conectar a %s en esta computadora. Es probable que Proxynode Core ya este corriendo.</translation>
     </message>
     <message>
         <source>Unable to locate enough funds for this transaction that are not equal 10000 PRX.</source>
@@ -3767,8 +3767,8 @@ por ejemplo: alertnotify=echo %%s | mail -s "prx Alert" admin@foo.com
         <translation>Advertencia: -paytxfee esta muy alta! Esta es la comisión de transacción que pagarás si envías una transacción.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong prx Core will not work properly.</source>
-        <translation>Advertencia: Por favor verifique que la fecha y hora de su computadora sean correctas! Si su reloj esta fuera de hora prx Core no funcionará adecuadamente.</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Proxynode Core will not work properly.</source>
+        <translation>Advertencia: Por favor verifique que la fecha y hora de su computadora sean correctas! Si su reloj esta fuera de hora Proxynode Core no funcionará adecuadamente.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -3911,8 +3911,8 @@ por ejemplo: alertnotify=echo %%s | mail -s "prx Alert" admin@foo.com
         <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The prx Core Developers</source>
-        <translation>Copyright (C) 2017-%i The prx Core Developers</translation>
+        <source>Copyright (C) 2017-%i The Proxynode Core Developers</source>
+        <translation>Copyright (C) 2017-%i The Proxynode Core Developers</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -3983,7 +3983,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "prx Alert" admin@foo.com
         <translation>Error al cargar wallet.dat: Billetera dañada</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of prx Core</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of Proxynode Core</source>
         <translation>Error al cargar wallet.dat: La Billetera requiere una nueva versión del Núcleo prx</translation>
     </message>
     <message>
@@ -4087,8 +4087,8 @@ por ejemplo: alertnotify=echo %%s | mail -s "prx Alert" admin@foo.com
         <translation>Información</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. prx Core is shutting down.</source>
-        <translation>La prueba de salud de inicialización ha fallado. prx Core se cerrará.</translation>
+        <source>Initialization sanity check failed. Proxynode Core is shutting down.</source>
+        <translation>La prueba de salud de inicialización ha fallado. Proxynode Core se cerrará.</translation>
     </message>
     <message>
         <source>Input is not valid.</source>
@@ -4659,8 +4659,8 @@ por ejemplo: alertnotify=echo %%s | mail -s "prx Alert" admin@foo.com
         <translation>Monedero bloqueado.</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart prx Core to complete</source>
-        <translation>Monedero necesita ser reescrito: reinicie prx Core para completar</translation>
+        <source>Wallet needed to be rewritten: restart Proxynode Core to complete</source>
+        <translation>Monedero necesita ser reescrito: reinicie Proxynode Core para completar</translation>
     </message>
     <message>
         <source>Wallet options:</source>

@@ -594,7 +594,7 @@
         <translation>Værktøjslinier</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx kerne</translation>
     </message>
     <message>
@@ -614,11 +614,11 @@
         <translation>Vis masternoder</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
+        <source>&amp;About Proxynode Core</source>
         <translation>&amp;Om prx kerne</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
+        <source>Show information about Proxynode Core</source>
         <translation>Vis information om prx kerne</translation>
     </message>
     <message>
@@ -674,11 +674,11 @@
         <translation>Blockexplorer vindue</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
         <translation>Vis hjelpetekster fra prx kernen for at få en liste med mulige prx kommandolinie-startparametre</translation>
     </message>
     <message>
-        <source>prx Core client</source>
+        <source>Proxynode Core client</source>
         <translation>prx kerneklient</translation>
     </message>
     <message>
@@ -1140,7 +1140,7 @@ Adresse: %4
         <translation>version</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx kerne</translation>
     </message>
     <message>
@@ -1148,7 +1148,7 @@ Adresse: %4
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <source>About prx Core</source>
+        <source>About Proxynode Core</source>
         <translation>om prx kerne</translation>
     </message>
     <message>
@@ -1195,15 +1195,15 @@ Adresse: %4
         <translation>Velkommen</translation>
     </message>
     <message>
-        <source>Welcome to prx Core.</source>
+        <source>Welcome to Proxynode Core.</source>
         <translation>Velkommen til prx kerne</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where prx Core will store its data.</source>
+        <source>As this is the first time the program is launched, you can choose where Proxynode Core will store its data.</source>
         <translation>Da det er første gang programmet startes, kan De vælge hvor prx kernen skal lagre sine data</translation>
     </message>
     <message>
-        <source>prx Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>Proxynode Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation>prx kernen vil nu hente og gemme en kopi af prx blockchain. Der skal være mindst %1GB ledigt på lagermediet, og behovet vil stige efterhånden som tiden går. Selve tegnebogen vil også blive gemt her.</translation>
     </message>
     <message>
@@ -1215,7 +1215,7 @@ Adresse: %4
         <translation>Anvend en mappe valgt af brugeren</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx kerne</translation>
     </message>
     <message>
@@ -2819,7 +2819,7 @@ Kontroller adressen og prøv igen.</translation>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>prx Core is shutting down...</source>
+        <source>Proxynode Core is shutting down...</source>
         <translation>prx kernen lukker ned</translation>
     </message>
     <message>
@@ -2969,7 +2969,7 @@ Kontroller adressen og prøv igen.</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>prx kerne</translation>
     </message>
     <message>
@@ -2989,7 +2989,7 @@ Kontroller adressen og prøv igen.</translation>
         <translation>PIVX "core" udviklerne</translation>
     </message>
     <message>
-        <source>The prx Core developers</source>
+        <source>The Proxynode Core developers</source>
         <translation>prx "core" udviklerne</translation>
     </message>
     <message>
@@ -3547,7 +3547,7 @@ Kontroller adressen og prøv igen.</translation>
         <translation>Forbind til den opgivne adresse og lyt efter JSON-.RPC forbindelser. Brug [host]:port notation for IPv6. Der kan indsættes flere linier (standard: Forbind til alle interfaces)</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. prx Core is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s. Proxynode Core is probably already running.</source>
         <translation>Kan ikke låse datamappen %s. prx core kører sandsynligvis allerede.</translation>
     </message>
     <message>
@@ -3728,7 +3728,7 @@ For eksempel: alertnotify=Echo %% | mail - s "prx ALARM!" e-mail@administrator.d
 </translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. prx Core is probably already running.</source>
+        <source>Unable to bind to %s on this computer. Proxynode Core is probably already running.</source>
         <translation>Det var ikke muligt at forbinde %s på denne computer. prx kører sandsynligvis allerede.</translation>
     </message>
     <message>
@@ -3748,7 +3748,7 @@ For eksempel: alertnotify=Echo %% | mail - s "prx ALARM!" e-mail@administrator.d
         <translation>Advarsel! -paytxfee er sat meget højt. Det er dette gebyr De kommer til at betale for transaktionen, hvis De gennemfører. </translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong prx Core will not work properly.</source>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Proxynode Core will not work properly.</source>
         <translation>Advarsel! Kontroller at computerens dato og tid er korrekt indstillet. Hvis tiden ikke er rigtig, vil prx core ikke fungere ordentligt.</translation>
     </message>
     <message>
@@ -3892,8 +3892,8 @@ For eksempel: alertnotify=Echo %% | mail - s "prx ALARM!" e-mail@administrator.d
         <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The prx Core Developers</source>
-        <translation>Copyright (C) 2017-%i The prx Core Developers</translation>
+        <source>Copyright (C) 2017-%i The Proxynode Core Developers</source>
+        <translation>Copyright (C) 2017-%i The Proxynode Core Developers</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
@@ -3964,7 +3964,7 @@ For eksempel: alertnotify=Echo %% | mail - s "prx ALARM!" e-mail@administrator.d
         <translation>Fejl ved indlæsning af wallet.dat: Tegnebogen er beskadiget</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of prx Core</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of Proxynode Core</source>
         <translation>Fejl ved indlæsning af wallet.dat: Tegnebogen kræver en nyere version af prx core</translation>
     </message>
     <message>
@@ -4068,7 +4068,7 @@ For eksempel: alertnotify=Echo %% | mail - s "prx ALARM!" e-mail@administrator.d
         <translation>Info:</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. prx Core is shutting down.</source>
+        <source>Initialization sanity check failed. Proxynode Core is shutting down.</source>
         <translation>Initiering af sanitetskontrollen fejlede. prx core lukker ned. </translation>
     </message>
     <message>
@@ -4596,7 +4596,7 @@ For eksempel: alertnotify=Echo %% | mail - s "prx ALARM!" e-mail@administrator.d
         <translation>Tegnebogen er låst</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart prx Core to complete</source>
+        <source>Wallet needed to be rewritten: restart Proxynode Core to complete</source>
         <translation>Tegnebogen måtte genskrives. Genstart prx core for at gøre færdig</translation>
     </message>
     <message>

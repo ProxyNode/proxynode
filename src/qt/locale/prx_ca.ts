@@ -552,12 +552,12 @@
         <translation>versió</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
-        <source>About prx Core</source>
-        <translation>Sobre prx Core</translation>
+        <source>About Proxynode Core</source>
+        <translation>Sobre Proxynode Core</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -575,12 +575,12 @@
         <translation>Benvingut</translation>
     </message>
     <message>
-        <source>Welcome to prx Core.</source>
-        <translation>Benvingut a prx Core.</translation>
+        <source>Welcome to Proxynode Core.</source>
+        <translation>Benvingut a Proxynode Core.</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1101,8 +1101,8 @@
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Version %1</source>

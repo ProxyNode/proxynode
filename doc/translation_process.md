@@ -1,7 +1,7 @@
 Translations
 ============
 
-The prx Core project has been designed to support multiple localisations. This makes adding new phrases, and completely new languages easily achievable.
+The Proxynode Core project has been designed to support multiple localisations. This makes adding new phrases, and completely new languages easily achievable.
 
 ### Writing code with translations
 We use automated scripts to help extract translations in both Qt, and non-Qt source files. It is rarely necessary to manually edit the files in `src/qt/locale/`. The translation source files must adhere to the following format:

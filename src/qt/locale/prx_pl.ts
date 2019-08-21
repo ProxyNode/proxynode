@@ -514,7 +514,7 @@
         <translation>&amp;Pomoc</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>&amp;Rdzeń prx</translation>
     </message>
     <message>
@@ -534,11 +534,11 @@
         <translation>Przeglądaj masternodes</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
+        <source>&amp;About Proxynode Core</source>
         <translation>&amp;O rdzeniu bitcoina</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
+        <source>Show information about Proxynode Core</source>
         <translation>Pokaż informacje o rdzeniu bitcoina</translation>
     </message>
     <message>
@@ -590,11 +590,11 @@
         <translation>Okno eksplorera bloków</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
         <translation>Pokaż wiadomość pomocy rdzenia prx, aby dostać listę możliwych opcji prx command-line</translation>
     </message>
     <message>
-        <source>prx Core client</source>
+        <source>Proxynode Core client</source>
         <translation>Rdzeń prx klient</translation>
     </message>
     <message>
@@ -904,7 +904,7 @@ MultiWysyłlka: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>&amp;Rdzeń prx</translation>
     </message>
     </context>
@@ -919,7 +919,7 @@ MultiWysyłlka: %1</translation>
         <translation>Użyj niestandardowej ścieżki danych</translation>
     </message>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>&amp;Rdzeń prx</translation>
     </message>
     <message>
@@ -1835,7 +1835,7 @@ Proszę sprawdzić adres i spróbować ponownie</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
+        <source>Proxynode Core</source>
         <translation>&amp;Rdzeń prx</translation>
     </message>
     </context>

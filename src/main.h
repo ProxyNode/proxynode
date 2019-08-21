@@ -56,6 +56,38 @@ class CValidationState;
 struct CBlockTemplate;
 struct CNodeStateStats;
 
+inline int64_t MasternodeCollateralLimitBM(int nHeight)
+{
+	int64_t nSubsidy = 0;
+
+	 
+	if (nHeight <= 250 && nHeight > 1)
+		nSubsidy = 500;
+	else if (nHeight <= 2000 && nHeight > 250)
+		nSubsidy = 500;
+	else if (nHeight <= 15000 && nHeight > 2000)
+		nSubsidy = 1000;
+	else if (nHeight <= 40000 && nHeight > 15000)
+		nSubsidy = 2000;
+	else if (nHeight <= 75000 && nHeight > 40000)
+		nSubsidy = 4000;
+	else if (nHeight <= 125000 && nHeight > 75000)
+		nSubsidy = 6000;
+	else if (nHeight <= 250000 && nHeight > 125000)
+		nSubsidy = 12000;
+	else if (nHeight <= 300000 && nHeight > 250000)
+		nSubsidy = 24000;
+	else if (nHeight <= 500000 && nHeight > 300000)
+		nSubsidy = 24000;
+	else if (nHeight <= 1000000 && nHeight > 500000)
+		nSubsidy = 50000;
+	else
+		nSubsidy = 50000;
+
+
+	return nSubsidy;
+}
+
 /** Default for -blockmaxsize and -blockminsize, which control the range of sizes the mining code will create **/
 static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 750000;
 static const unsigned int DEFAULT_BLOCK_MIN_SIZE = 0;

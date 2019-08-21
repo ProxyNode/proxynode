@@ -479,6 +479,16 @@
                        <property name="spacing">
                         <number>12</number>
                        </property>
+                       <item row="0" column="1">
+                        <widget class="QLabel" name="labelSpendable">
+                         <property name="text">
+                          <string>Spendable:</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                        </widget>
+                       </item>
                        <item row="0" column="2">
                         <widget class="QLabel" name="labelWatchonly">
                          <property name="text">
@@ -496,18 +506,8 @@
                          </property>
                         </widget>
                        </item>
-                       <item row="0" column="1">
-                        <widget class="QLabel" name="labelSpendable">
-                         <property name="text">
-                          <string>Spendable:</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="2" column="1">
-                        <widget class="QLabel" name="labelUnconfirmed">
+                       <item row="1" column="1">
+                        <widget class="QLabel" name="labelBalance">
                          <property name="font">
                           <font>
                            <weight>75</weight>
@@ -518,23 +518,16 @@
                           <cursorShape>IBeamCursor</cursorShape>
                          </property>
                          <property name="toolTip">
-                          <string>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</string>
+                          <string>Your current spendable balance</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 PRX</string>
+                          <string>Spendable:</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                          </property>
                          <property name="textInteractionFlags">
                           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="2" column="0">
-                        <widget class="QLabel" name="labelPendingText">
-                         <property name="text">
-                          <string>Pending:</string>
                          </property>
                         </widget>
                        </item>
@@ -563,33 +556,15 @@
                          </property>
                         </widget>
                        </item>
-                       <item row="1" column="1">
-                        <widget class="QLabel" name="labelBalance">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="cursor">
-                          <cursorShape>IBeamCursor</cursorShape>
-                         </property>
-                         <property name="toolTip">
-                          <string>Your current spendable balance</string>
-                         </property>
+                       <item row="2" column="0">
+                        <widget class="QLabel" name="labelPendingText">
                          <property name="text">
-                          <string notr="true">0.000 000 00 PRX</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="textInteractionFlags">
-                          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                          <string>Pending:</string>
                          </property>
                         </widget>
                        </item>
-                       <item row="3" column="1">
-                        <widget class="QLabel" name="labelImmature">
+                       <item row="2" column="1">
+                        <widget class="QLabel" name="labelUnconfirmed">
                          <property name="font">
                           <font>
                            <weight>75</weight>
@@ -600,7 +575,7 @@
                           <cursorShape>IBeamCursor</cursorShape>
                          </property>
                          <property name="toolTip">
-                          <string>Staked or masternode rewards that has not yet matured</string>
+                          <string>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</string>
                          </property>
                          <property name="text">
                           <string notr="true">0.000 000 00 PRX</string>
@@ -645,6 +620,31 @@
                          </property>
                         </widget>
                        </item>
+                       <item row="3" column="1">
+                        <widget class="QLabel" name="labelImmature">
+                         <property name="font">
+                          <font>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>IBeamCursor</cursorShape>
+                         </property>
+                         <property name="toolTip">
+                          <string>Staked or masternode rewards that has not yet matured</string>
+                         </property>
+                         <property name="text">
+                          <string notr="true">0.000 000 00 PRX</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="textInteractionFlags">
+                          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                         </property>
+                        </widget>
+                       </item>
                        <item row="3" column="2">
                         <widget class="QLabel" name="labelWatchImmature">
                          <property name="font">
@@ -671,6 +671,49 @@
                         </widget>
                        </item>
                        <item row="4" column="0">
+                        <widget class="QLabel" name="labelLockedBalanceText">
+                         <property name="toolTip">
+                          <string>Locked PRX or Masternode collaterals. These are excluded from zPRX minting.</string>
+                         </property>
+                         <property name="text">
+                          <string>Locked:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="4" column="1">
+                        <widget class="QLabel" name="labelLockedBalance">
+                         <property name="font">
+                          <font>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>IBeamCursor</cursorShape>
+                         </property>
+                         <property name="toolTip">
+                          <string>Locked PRX Masternode collaterals.</string>
+                         </property>
+                         <property name="text">
+                          <string notr="true">0.000???000???00 PRX</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="textInteractionFlags">
+                         </property>
+                         <property name="text">
+                          <string notr="true">0.000 000 00 PRX</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="textInteractionFlags">
+                          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="5" column="0">
                         <widget class="QLabel" name="labelTotalText">
                          <property name="toolTip">
                           <string>Your current PRX balance, unconfirmed and immature transactions included</string>
@@ -680,7 +723,32 @@
                          </property>
                         </widget>
                        </item>
-                       <item row="4" column="2">
+                       <item row="5" column="1">
+                        <widget class="QLabel" name="labelTotal">
+                         <property name="font">
+                          <font>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>IBeamCursor</cursorShape>
+                         </property>
+                         <property name="toolTip">
+                          <string>Your current PRX balance, unconfirmed and immature transactions included</string>
+                         </property>
+                         <property name="text">
+                          <string notr="true">0.000 000 00 PRX</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="textInteractionFlags">
+                          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="5" column="2">
                         <widget class="QLabel" name="labelWatchTotal">
                          <property name="font">
                           <font>
@@ -705,7 +773,7 @@
                          </property>
                         </widget>
                        </item>
-                       <item row="4" column="3">
+                       <item row="5" column="3">
                         <spacer name="horizontalSpacer_9">
                          <property name="orientation">
                           <enum>Qt::Horizontal</enum>
@@ -717,31 +785,6 @@
                           </size>
                          </property>
                         </spacer>
-                       </item>
-                       <item row="4" column="1">
-                        <widget class="QLabel" name="labelTotal">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="cursor">
-                          <cursorShape>IBeamCursor</cursorShape>
-                         </property>
-                         <property name="toolTip">
-                          <string>Your current PRX balance, unconfirmed and immature transactions included</string>
-                         </property>
-                         <property name="text">
-                          <string notr="true">0.000 000 00 PRX</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="textInteractionFlags">
-                          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-                         </property>
-                        </widget>
                        </item>
                       </layout>
                      </item>
@@ -771,7 +814,7 @@
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_7">
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,0">
+                      <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,0,0">
                        <item>
                         <widget class="QLabel" name="label_5z_3">
                          <property name="minimumSize">

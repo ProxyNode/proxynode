@@ -594,8 +594,8 @@
         <translation>Panel nástrojov Záložky</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Send coins to a PRX address</source>
@@ -614,12 +614,12 @@
         <translation>Prezrieť masternody</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
-        <translation>O prx Core</translation>
+        <source>&amp;About Proxynode Core</source>
+        <translation>O Proxynode Core</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
-        <translation>Zobraziť informácie o prx Core</translation>
+        <source>Show information about Proxynode Core</source>
+        <translation>Zobraziť informácie o Proxynode Core</translation>
     </message>
     <message>
         <source>Modify configuration options for prx</source>
@@ -674,12 +674,12 @@
         <translation>Okno blockchain prehliadača</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
-        <translation>Zobraziť pomocnú správu programu prx Core a získajte zoznam možností príkazového riadka prx</translation>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
+        <translation>Zobraziť pomocnú správu programu Proxynode Core a získajte zoznam možností príkazového riadka prx</translation>
     </message>
     <message>
-        <source>prx Core client</source>
-        <translation>prx Core klient</translation>
+        <source>Proxynode Core client</source>
+        <translation>Proxynode Core klient</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -900,15 +900,15 @@ MultiSend: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     </context>
 <context>
     <name>Intro</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1153,8 +1153,8 @@ MultiSend: %1</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     </context>
 <context>

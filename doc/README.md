@@ -1,9 +1,9 @@
-prx Core
+Proxynode Core
 =====================
 
 Setup
 ---------------------
-[prx Core](http://prx.io) is the original prx client and it builds the backbone of the network. However, it downloads and stores the entire history of prx transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[Proxynode Core](http://proxynode.network) is the original prx client and it builds the backbone of the network. However, it downloads and stores the entire history of prx transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
@@ -26,7 +26,7 @@ Drag prx-Qt to your applications folder, and then run prx-Qt.
 
 ### Need Help?
 
-* Join our Discord server [Discord Server](https://discord.prx.io)
+* Join our Discord server [Discord Server](https://discord.proxynode.network)
 
 Building
 ---------------------

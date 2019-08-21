@@ -586,8 +586,8 @@
         <translation>Schede degli strumenti</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Send coins to a PRX address</source>
@@ -606,12 +606,12 @@
         <translation>Esplora i masternodes</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
-        <translation>&amp;Informazioni prx Core</translation>
+        <source>&amp;About Proxynode Core</source>
+        <translation>&amp;Informazioni Proxynode Core</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
-        <translation>Visualizza informazioni su prx Core</translation>
+        <source>Show information about Proxynode Core</source>
+        <translation>Visualizza informazioni su Proxynode Core</translation>
     </message>
     <message>
         <source>Modify configuration options for prx</source>
@@ -642,8 +642,8 @@
         <translation>Finestra Block Explorer</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
-        <translation>Mostra il messaggio di aiuto prx Core per ottenere un elenco con le possibili opzioni di riga di comando prx</translation>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
+        <translation>Mostra il messaggio di aiuto Proxynode Core per ottenere un elenco con le possibili opzioni di riga di comando prx</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -880,8 +880,8 @@ MultiSend: %1</translation>
         <translation>versione</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
@@ -907,8 +907,8 @@ MultiSend: %1</translation>
         <translation>Benvenuto</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1153,8 +1153,8 @@ MultiSend: %1</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     </context>
 <context>

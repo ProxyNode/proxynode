@@ -327,7 +327,7 @@ am__libbitcoin_util_a_SOURCES_DIST = allocators.cpp compat/strnlen.cpp \
 	rpcprotocol.cpp sync.cpp uint256.cpp util.cpp \
 	utilstrencodings.cpp utilmoneystr.cpp utiltime.cpp bignum.h \
 	activemasternode.h addrman.h alert.h allocators.h amount.h \
-	base58.h bip38.h bloom.h chain.h chainparams.h \
+	arith_uint256.h base58.h bip38.h bloom.h chain.h chainparams.h \
 	chainparamsbase.h chainparamsseeds.h checkpoints.h \
 	checkqueue.h clientversion.h coincontrol.h coins.h compat.h \
 	compat/sanity.h compressor.h primitives/block.h \
@@ -1552,6 +1552,7 @@ BITCOIN_CORE_H = \
   alert.h \
   allocators.h \
   amount.h \
+  arith_uint256.h \
   base58.h \
   bip38.h \
   bloom.h \

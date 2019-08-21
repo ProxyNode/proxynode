@@ -598,8 +598,8 @@
         <translation>Registerkartenleiste</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Send coins to a PRX address</source>
@@ -622,12 +622,12 @@
         <translation>Masternodes durchsuchen</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
-        <translation>Über.prx Core</translation>
+        <source>&amp;About Proxynode Core</source>
+        <translation>Über.Proxynode Core</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
-        <translation>Zeigt Informationen über prx Core</translation>
+        <source>Show information about Proxynode Core</source>
+        <translation>Zeigt Informationen über Proxynode Core</translation>
     </message>
     <message>
         <source>Modify configuration options for prx</source>
@@ -678,12 +678,12 @@
         <translation>Blockchain Betrachter Fenster</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
         <translation>Zeige die prx-Core Hilfe, um mögliche prx Kommando-Zeilen-Optionen anzuzeigen</translation>
     </message>
     <message>
-        <source>prx Core client</source>
-        <translation>prx Core Client</translation>
+        <source>Proxynode Core client</source>
+        <translation>Proxynode Core Client</translation>
     </message>
     <message numerus="yes">
         <source>%n active connection(s) to prx network</source>
@@ -1171,16 +1171,16 @@ Adresse: %4</translation>
         <translation>Version</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
         <translation>(%1-Bit)</translation>
     </message>
     <message>
-        <source>About prx Core</source>
-        <translation>Über prx Core</translation>
+        <source>About Proxynode Core</source>
+        <translation>Über Proxynode Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1226,16 +1226,16 @@ Adresse: %4</translation>
         <translation>Willkommen</translation>
     </message>
     <message>
-        <source>Welcome to prx Core.</source>
-        <translation>Willkommen zu prx Core.</translation>
+        <source>Welcome to Proxynode Core.</source>
+        <translation>Willkommen zu Proxynode Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where prx Core will store its data.</source>
-        <translation>Da dies das erste Mal ist, dass Sie prx Core starten, legen Sie jetzt bitte fest, an welchem Ort die Daten gespeichert werden sollen.</translation>
+        <source>As this is the first time the program is launched, you can choose where Proxynode Core will store its data.</source>
+        <translation>Da dies das erste Mal ist, dass Sie Proxynode Core starten, legen Sie jetzt bitte fest, an welchem Ort die Daten gespeichert werden sollen.</translation>
     </message>
     <message>
-        <source>prx Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>prx Core wird die Blockchain laden und lokal speichern. Dafür sind mindestens %1GB freier Speicherplatz erforderlich. Der Speicherbedarf wird mit der Zeit anwachsen. Die Wallet wird ebenfalls in diesem Verzeichnis gespeichert.</translation>
+        <source>Proxynode Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Proxynode Core wird die Blockchain laden und lokal speichern. Dafür sind mindestens %1GB freier Speicherplatz erforderlich. Der Speicherbedarf wird mit der Zeit anwachsen. Die Wallet wird ebenfalls in diesem Verzeichnis gespeichert.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1246,8 +1246,8 @@ Adresse: %4</translation>
         <translation>Ein benutzerdefiniertes Datenverzeichnis verwenden:</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -2874,8 +2874,8 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <source>prx Core is shutting down...</source>
-        <translation>prx Core wird beendet...</translation>
+        <source>Proxynode Core is shutting down...</source>
+        <translation>Proxynode Core wird beendet...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -3024,8 +3024,8 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -3040,8 +3040,8 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
         <translation>Die Dash Core Entwickler</translation>
     </message>
     <message>
-        <source>The prx Core developers</source>
-        <translation>Die prx Core Entwickler</translation>
+        <source>The Proxynode Core developers</source>
+        <translation>Die Proxynode Core Entwickler</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -3602,8 +3602,8 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
         <translation>Fehler aufgetreten beim Einrichten der RPC-Adresse %s Port %u für horchen: %s</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. prx Core is probably already running.</source>
-        <translation>Kann keine Sperre für das Datenverzeichnis %s erhalten. prx Core läuft wahrscheinlich bereits.</translation>
+        <source>Cannot obtain a lock on data directory %s. Proxynode Core is probably already running.</source>
+        <translation>Kann keine Sperre für das Datenverzeichnis %s erhalten. Proxynode Core läuft wahrscheinlich bereits.</translation>
     </message>
     <message>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
@@ -3734,8 +3734,8 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
         <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
     </message>
     <message>
-        <source>Copyright (C) 2017-%i The prx Core Developers</source>
-        <translation>Copyright (C) 2017-%i The prx Core Developers</translation>
+        <source>Copyright (C) 2017-%i The Proxynode Core Developers</source>
+        <translation>Copyright (C) 2017-%i The Proxynode Core Developers</translation>
     </message>
     <message>
         <source>Error</source>
@@ -3770,8 +3770,8 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
         <translation>Hinweis</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. prx Core is shutting down.</source>
-        <translation>Initialisierung Sanity-Check fehlgeschlagen. prx Core schaltet ab.</translation>
+        <source>Initialization sanity check failed. Proxynode Core is shutting down.</source>
+        <translation>Initialisierung Sanity-Check fehlgeschlagen. Proxynode Core schaltet ab.</translation>
     </message>
     <message>
         <source>Input is not valid.</source>
@@ -4050,8 +4050,8 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
         <translation>Wallet gesperrt.</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart prx Core to complete</source>
-        <translation>Wallet musste neu geschrieben werden: Bitte prx Core neu starten</translation>
+        <source>Wallet needed to be rewritten: restart Proxynode Core to complete</source>
+        <translation>Wallet musste neu geschrieben werden: Bitte Proxynode Core neu starten</translation>
     </message>
     <message>
         <source>Wallet options:</source>

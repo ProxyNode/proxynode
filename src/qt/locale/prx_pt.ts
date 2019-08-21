@@ -1215,8 +1215,8 @@
         <translation>Carteira esta bloqueada.</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart prx Core to complete</source>
-        <translation>Carteira precisa ser reescrita: reinicie o prx Core para completar.</translation>
+        <source>Wallet needed to be rewritten: restart Proxynode Core to complete</source>
+        <translation>Carteira precisa ser reescrita: reinicie o Proxynode Core para completar.</translation>
     </message>
     <message>
         <source>Wallet options:</source>

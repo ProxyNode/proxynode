@@ -594,8 +594,8 @@
         <translation>Nástrojová lišta záložek</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Send coins to a PRX address</source>
@@ -614,12 +614,12 @@
         <translation>Procházet masternody</translation>
     </message>
     <message>
-        <source>&amp;About prx Core</source>
-        <translation>&amp;O prx Core</translation>
+        <source>&amp;About Proxynode Core</source>
+        <translation>&amp;O Proxynode Core</translation>
     </message>
     <message>
-        <source>Show information about prx Core</source>
-        <translation>Zobraz informace o prx Core</translation>
+        <source>Show information about Proxynode Core</source>
+        <translation>Zobraz informace o Proxynode Core</translation>
     </message>
     <message>
         <source>Modify configuration options for PRX</source>
@@ -674,12 +674,12 @@
         <translation>Okno blokového průzkumníka</translation>
     </message>
     <message>
-        <source>Show the prx Core help message to get a list with possible prx command-line options</source>
-        <translation>Zobrazit prx Core pomocnou zpráv pro získání seznamu možných parametrů prx pro příkazy do příkazové řádky</translation>
+        <source>Show the Proxynode Core help message to get a list with possible prx command-line options</source>
+        <translation>Zobrazit Proxynode Core pomocnou zpráv pro získání seznamu možných parametrů prx pro příkazy do příkazové řádky</translation>
     </message>
     <message>
-        <source>prx Core client</source>
-        <translation>prx Core klient</translation>
+        <source>Proxynode Core client</source>
+        <translation>Proxynode Core klient</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
@@ -1104,12 +1104,12 @@ MultiSend: %1</translation>
         <translation>verze</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
-        <source>About prx Core</source>
-        <translation>O prx Core</translation>
+        <source>About Proxynode Core</source>
+        <translation>O Proxynode Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -1143,16 +1143,16 @@ MultiSend: %1</translation>
         <translation>Vítejte</translation>
     </message>
     <message>
-        <source>Welcome to prx Core.</source>
-        <translation>Vítejte v prx Core.</translation>
+        <source>Welcome to Proxynode Core.</source>
+        <translation>Vítejte v Proxynode Core.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where prx Core will store its data.</source>
-        <translation>Při prvním spuštění programu si můžete vybrat, kam bude prx Core ukládat svá data.</translation>
+        <source>As this is the first time the program is launched, you can choose where Proxynode Core will store its data.</source>
+        <translation>Při prvním spuštění programu si můžete vybrat, kam bude Proxynode Core ukládat svá data.</translation>
     </message>
     <message>
-        <source>prx Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>prx Core stáhne a uloží kopii prx blockchainu. Nejméně %1GB dat bude do této složky uloženo a v průběhu času bude ukládat další data. Peněženka bude v této složce uložena také.</translation>
+        <source>Proxynode Core will download and store a copy of the prx block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>Proxynode Core stáhne a uloží kopii prx blockchainu. Nejméně %1GB dat bude do této složky uloženo a v průběhu času bude ukládat další data. Peněženka bude v této složce uložena také.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1163,8 +1163,8 @@ MultiSend: %1</translation>
         <translation>Použít vlastní složku pro data</translation>
     </message>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -2135,8 +2135,8 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>prx Core</source>
-        <translation>prx Core</translation>
+        <source>Proxynode Core</source>
+        <translation>Proxynode Core</translation>
     </message>
     </context>
 <context>
