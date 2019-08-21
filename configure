@@ -590,7 +590,6 @@ MAKEFLAGS=
 PACKAGE_NAME='Proxynode Core'
 PACKAGE_TARNAME='prx'
 PACKAGE_VERSION='2.1.0'
-PACKAGE_STRING='prx Core 2.1.0'
 PACKAGE_STRING='Proxynode Core 2.1.0'
 PACKAGE_BUGREPORT='http://proxynode.network'
 PACKAGE_URL=''
