@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2017-2017 The Proxynode developers
+// Copyright (c) 2017-2017 The prx developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,7 +10,7 @@
 #define BITCOIN_MAIN_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/proxynode-config.h"
+#include "config/prx-config.h"
 #endif
 
 #include "bignum.h"
@@ -55,6 +55,38 @@ class CValidationState;
 
 struct CBlockTemplate;
 struct CNodeStateStats;
+
+inline int64_t MasternodeCollateralLimitBM(int nHeight)
+{
+	int64_t nSubsidy = 0;
+
+	 
+	if (nHeight <= 250 && nHeight > 1)
+		nSubsidy = 500;
+	else if (nHeight <= 2000 && nHeight > 250)
+		nSubsidy = 500;
+	else if (nHeight <= 15000 && nHeight > 2000)
+		nSubsidy = 1000;
+	else if (nHeight <= 40000 && nHeight > 15000)
+		nSubsidy = 2000;
+	else if (nHeight <= 75000 && nHeight > 40000)
+		nSubsidy = 4000;
+	else if (nHeight <= 125000 && nHeight > 75000)
+		nSubsidy = 6000;
+	else if (nHeight <= 250000 && nHeight > 125000)
+		nSubsidy = 12000;
+	else if (nHeight <= 300000 && nHeight > 250000)
+		nSubsidy = 24000;
+	else if (nHeight <= 500000 && nHeight > 300000)
+		nSubsidy = 24000;
+	else if (nHeight <= 1000000 && nHeight > 500000)
+		nSubsidy = 50000;
+	else
+		nSubsidy = 50000;
+
+
+	return nSubsidy;
+}
 
 /** Default for -blockmaxsize and -blockminsize, which control the range of sizes the mining code will create **/
 static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 750000;
@@ -106,6 +138,13 @@ static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;
 
 /** Enable bloom filter */
  static const bool DEFAULT_PEERBLOOMFILTERS = true;
+ 
+/** Default for -blockspamfilter, use header spam filter */
+static const bool DEFAULT_BLOCK_SPAM_FILTER = true;
+/** Default for -blockspamfiltermaxsize, maximum size of the list of indexes in the block spam filter */
+static const unsigned int DEFAULT_BLOCK_SPAM_FILTER_MAX_SIZE = 10;
+/** Default for -blockspamfiltermaxavg, maximum average size of an index occurrence in the block spam filter */
+static const unsigned int DEFAULT_BLOCK_SPAM_FILTER_MAX_AVG = 10;
 
 /** "reject" message codes */
 static const unsigned char REJECT_MALFORMED = 0x01;
@@ -146,6 +185,7 @@ extern bool fLargeWorkForkFound;
 extern bool fLargeWorkInvalidChainFound;
 
 extern unsigned int nStakeMinAge;
+extern unsigned int nStakeMinAge2;
 extern int64_t nLastCoinStakeSearchInterval;
 extern int64_t nLastCoinStakeSearchTime;
 extern int64_t nReserveBalance;
@@ -621,4 +661,23 @@ struct CBlockTemplate {
     std::vector<CAmount> vTxFees;
     std::vector<int64_t> vTxSigOps;
 };
+class CNodeBlocks
+{
+private:
+    std::map<int,int> points;
+    size_t maxSize;
+    size_t maxAvg;
+
+    void AddPoint(int nHeight);
+
+public:
+    CNodeBlocks() : maxSize(0), maxAvg(0)
+    {
+        maxSize = GetArg("-blockspamfiltermaxsize", DEFAULT_BLOCK_SPAM_FILTER_MAX_SIZE);
+        maxAvg = GetArg("-blockspamfiltermaxavg", DEFAULT_BLOCK_SPAM_FILTER_MAX_AVG);
+    }
+    bool BlockReceived(int nHeight);
+    bool UpdateState(CValidationState& state);
+};
+
 #endif // BITCOIN_MAIN_H

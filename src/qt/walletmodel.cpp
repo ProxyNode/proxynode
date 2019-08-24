@@ -82,6 +82,10 @@ CAmount WalletModel::getImmatureBalance() const
     return wallet->GetImmatureBalance();
 }
 
+CAmount WalletModel::getLockedBalance() const
+{
+    return wallet->GetLockedCoins();
+}
 bool WalletModel::haveWatchOnly() const
 {
     return fHaveWatchOnly;
@@ -237,7 +241,7 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
                 return InvalidAmount;
             }
             total += subtotal;
-        } else { // User-entered proxynode address / amount:
+        } else { // User-entered prx address / amount:
             if (!validateAddress(rcp.address)) {
                 return InvalidAddress;
             }
@@ -326,7 +330,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(WalletModelTransaction& tran
                 std::string value;
                 rcp.paymentRequest.SerializeToString(&value);
                 newTx->vOrderForm.push_back(make_pair(key, value));
-            } else if (!rcp.message.isEmpty()) // Message from normal proxynode:URI (proxynode:XyZ...?message=example)
+            } else if (!rcp.message.isEmpty()) // Message from normal prx:URI (prx:XyZ...?message=example)
             {
                 newTx->vOrderForm.push_back(make_pair("Message", rcp.message.toStdString()));
             }

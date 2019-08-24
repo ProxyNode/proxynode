@@ -11,9 +11,9 @@ When a "Transaction Lock" occurs the hash of the related transaction is broadcas
 * `zmqpubrawtxlock`: publishes the raw transaction when locked via SwiftTX
 * `zmqpubhashtxlock`: publishes the transaction hash when locked via SwiftTX
 
-This mechanism has been integrated into Bitcore-Node-Proxynode which allows for notification to be broadcast through Insight API in one of two ways:
-* WebSocket: [https://github.com/proxynode/insight-api-proxynode#web-socket-api](https://github.com/proxynode/insight-api-proxynode#web-socket-api)
-* API: [https://github.com/proxynode/insight-api-proxynode#swifttx-transactions](https://github.com/proxynode/insight-api-proxynode#swifttx-transactions)
+This mechanism has been integrated into Bitcore-Node-prx which allows for notification to be broadcast through Insight API in one of two ways:
+* WebSocket: [https://github.com/prx/insight-api-prx#web-socket-api](https://github.com/prx/insight-api-prx#web-socket-api)
+* API: [https://github.com/prx/insight-api-prx#swifttx-transactions](https://github.com/prx/insight-api-prx#swifttx-transactions)
 
 ####Command line option
 

@@ -29,10 +29,10 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Proxynode-Qt</string>
+  <string>prx-Qt</string>
 
   <key>CFBundleIdentifier</key>
-  <string>io.proxynode.PRXcoin-Qt</string>
+  <string>io.prx.PRXcoin-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -40,10 +40,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.proxynode.PRXcoinPayment</string>
+      <string>io.prx.PRXcoinPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>proxynode</string>
+        <string>prx</string>
       </array>
     </dict>
   </array>
@@ -52,9 +52,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>io.proxynode.paymentrequest</string>
+      <string>io.prx.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Proxynode payment request</string>
+      <string>prx payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -62,10 +62,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-proxynode-payment-request</string>
+        <string>application/x-prx-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>proxynodepaymentrequest</string>
+          <string>prxpaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -78,7 +78,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>io.proxynode.paymentrequest</string>
+        <string>io.prx.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

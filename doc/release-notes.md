@@ -2,14 +2,14 @@
 
 Proxynode Core version *version* is now available from:
 
-  <https://github.com/proxynode/proxynode/releases>
+  <https://github.com/prx/prx/releases>
 
 This is a new major version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/proxynode/proxynode/issues>
+  <https://github.com/prx/prx/issues>
 
 Mandatory Update
 ==============
@@ -18,7 +18,7 @@ Mandatory Update
 How to Upgrade
 ==============
 
-If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/Proxynode-Qt (on Mac) or proxynoded/proxynode-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/prx-Qt (on Mac) or prxd/prx-qt (on Linux).
 
 Compatibility
 ==============
@@ -50,7 +50,7 @@ overridden with the option `-rpccookiefile`.
 This is similar to Tor's CookieAuthentication: see
 https://www.torproject.org/docs/tor-manual.html.en
 
-This allows running proxynoded without having to do any manual configuration.
+This allows running prxd without having to do any manual configuration.
 
 
 *version* Change log

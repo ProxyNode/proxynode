@@ -1146,6 +1146,23 @@ CAmount CWallet::GetBalance() const
     return nTotal;
 }
 
+CAmount CWallet::GetLockedCoins() const
+{
+    if (fLiteMode) return 0;
+
+    CAmount nTotal = 0;
+    {
+        LOCK2(cs_main, cs_wallet);
+        for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it) {
+            const CWalletTx* pcoin = &(*it).second;
+
+            if (pcoin->IsTrusted() && pcoin->GetDepthInMainChain() > 0)
+                nTotal += pcoin->GetLockedCredit();
+        }
+    }
+
+    return nTotal;
+}
 CAmount CWallet::GetUnconfirmedBalance() const
 {
     CAmount nTotal = 0;
@@ -1348,18 +1365,34 @@ bool CWallet::SelectStakeCoins(std::set<std::pair<const CWalletTx*, unsigned int
     vector<COutput> vCoins;
     AvailableCoins(vCoins, true, NULL, false, STAKABLE_COINS);
     CAmount nAmountSelected = 0;
+	
+		unsigned int nStakeMinAgeCurrent = nStakeMinAge;
+    int nStakeDepth = Params().COINBASE_MATURITY();
+    if (IsSporkActive(SPORK_17_STAKE_REQ_AG)) {
+        nStakeMinAgeCurrent = nStakeMinAge2;
+        nStakeDepth = Params().Stake_MinConfirmations();
+    }
+
+    CAmount nStakeAmount = 0;
+    if (IsSporkActive(SPORK_18_STAKE_REQ_SZ)) {
+        nStakeAmount = Params().Stake_MinAmount();
+    }
 
     for (const COutput& out : vCoins) {
         //make sure not to outrun target amount
         if (nAmountSelected + out.tx->vout[out.i].nValue > nTargetAmount)
             continue;
+		
+		//require a minimum amount to stake
+        if (out.tx->vout[out.i].nValue < nStakeAmount)
+            continue;
 
         //check for min age
-        if (GetAdjustedTime() - out.tx->GetTxTime() < nStakeMinAge)
+        if (GetAdjustedTime() - out.tx->GetTxTime() < nStakeMinAgeCurrent)
             continue;
 
         //check that it is matured
-        if (out.nDepth < (out.tx->IsCoinStake() ? Params().COINBASE_MATURITY() : 10))
+        if (out.nDepth < (out.tx->IsCoinStake() ? nStakeDepth : 10))
             continue;
 
         //add to our stake set
@@ -1379,11 +1412,35 @@ bool CWallet::MintableCoins()
 
     vector<COutput> vCoins;
     AvailableCoins(vCoins, true);
+	
+	unsigned int nStakeMinAgeCurrent = nStakeMinAge;
+    int nMinDepth = Params().COINBASE_MATURITY();
+    if (IsSporkActive(SPORK_17_STAKE_REQ_AG)) {
+        nStakeMinAgeCurrent = nStakeMinAge2;
+        nMinDepth = Params().Stake_MinConfirmations();
+    }
+    CAmount nMinAmount = 0.0;
+    if (IsSporkActive(SPORK_18_STAKE_REQ_SZ)) {
+        nMinAmount = Params().Stake_MinAmount();
+    }
 
     for (const COutput& out : vCoins) {
         //check for min age
-        if (GetAdjustedTime() - out.tx->GetTxTime() > nStakeMinAge)
-            return true;
+        int64_t nTxTime = out.tx->GetTxTime();
+        if (!out.tx->IsInMainChain())
+                continue;
+            nTxTime = mapBlockIndex.at(out.tx->hashBlock)->GetBlockTime();
+        // Make sure minimum depth has been matched.
+        if (out.tx->GetDepthInMainChain(false) <= nMinDepth)
+            continue;
+
+        // Make sure minimum amount is met for staking.
+        if (out.Value() <= nMinAmount)
+            continue;
+
+        // Min age check
+        if (GetAdjustedTime() - nTxTime > nStakeMinAgeCurrent)
+        return true;
     }
 
     return false;

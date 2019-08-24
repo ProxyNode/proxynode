@@ -242,10 +242,10 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop Proxynode server.");
+            "\nStop prx server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "Proxynode server stopping";
+    return "prx server stopping";
 }
 
 
@@ -327,33 +327,33 @@ static const CRPCCommand vRPCCommands[] =
         {"hidden", "reconsiderblock", &reconsiderblock, true, true, false},
         {"hidden", "setmocktime", &setmocktime, true, false, false},
 
-        /* Proxynode features */
-        {"Proxynode", "masternode", &masternode, true, true, false},
-        {"Proxynode", "listmasternodes", &listmasternodes, true, true, false},
-        {"Proxynode", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"Proxynode", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"Proxynode", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"Proxynode", "masternodedebug", &masternodedebug, true, true, false},
-        {"Proxynode", "startmasternode", &startmasternode, true, true, false},
-        {"Proxynode", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"Proxynode", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"Proxynode", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"Proxynode", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"Proxynode", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"Proxynode", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"Proxynode", "mnbudget", &mnbudget, true, true, false},
-        {"Proxynode", "preparebudget", &preparebudget, true, true, false},
-        {"Proxynode", "submitbudget", &submitbudget, true, true, false},
-        {"Proxynode", "mnbudgetvote", &mnbudgetvote, true, true, false},
-        {"Proxynode", "getbudgetvotes", &getbudgetvotes, true, true, false},
-        {"Proxynode", "getnextsuperblock", &getnextsuperblock, true, true, false},
-        {"Proxynode", "getbudgetprojection", &getbudgetprojection, true, true, false},
-        {"Proxynode", "getbudgetinfo", &getbudgetinfo, true, true, false},
-        {"Proxynode", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
-        {"Proxynode", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"Proxynode", "checkbudgets", &checkbudgets, true, true, false},
-        {"Proxynode", "mnsync", &mnsync, true, true, false},
-        {"Proxynode", "spork", &spork, true, true, false},
+        /* prx features */
+        {"prx", "masternode", &masternode, true, true, false},
+        {"prx", "listmasternodes", &listmasternodes, true, true, false},
+        {"prx", "getmasternodecount", &getmasternodecount, true, true, false},
+        {"prx", "masternodeconnect", &masternodeconnect, true, true, false},
+        {"prx", "masternodecurrent", &masternodecurrent, true, true, false},
+        {"prx", "masternodedebug", &masternodedebug, true, true, false},
+        {"prx", "startmasternode", &startmasternode, true, true, false},
+        {"prx", "createmasternodekey", &createmasternodekey, true, true, false},
+        {"prx", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
+        {"prx", "listmasternodeconf", &listmasternodeconf, true, true, false},
+        {"prx", "getmasternodestatus", &getmasternodestatus, true, true, false},
+        {"prx", "getmasternodewinners", &getmasternodewinners, true, true, false},
+        {"prx", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"prx", "mnbudget", &mnbudget, true, true, false},
+        {"prx", "preparebudget", &preparebudget, true, true, false},
+        {"prx", "submitbudget", &submitbudget, true, true, false},
+        {"prx", "mnbudgetvote", &mnbudgetvote, true, true, false},
+        {"prx", "getbudgetvotes", &getbudgetvotes, true, true, false},
+        {"prx", "getnextsuperblock", &getnextsuperblock, true, true, false},
+        {"prx", "getbudgetprojection", &getbudgetprojection, true, true, false},
+        {"prx", "getbudgetinfo", &getbudgetinfo, true, true, false},
+        {"prx", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
+        {"prx", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        {"prx", "checkbudgets", &checkbudgets, true, true, false},
+        {"prx", "mnsync", &mnsync, true, true, false},
+        {"prx", "spork", &spork, true, true, false},
 #ifdef ENABLE_WALLET
 
         /* Wallet */
@@ -1070,7 +1070,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> Proxynode-cli " + methodname + " " + args + "\n";
+    return "> prx-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)

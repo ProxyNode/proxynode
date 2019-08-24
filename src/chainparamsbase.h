@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between proxynode-cli and proxynoded)
- * of a given instance of the Proxynode system.
+ * CBaseChainParams defines the base parameters (shared between prx-cli and prxd)
+ * of a given instance of the prx system.
  */
 class CBaseChainParams
 {

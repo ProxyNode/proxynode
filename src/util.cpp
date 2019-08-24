@@ -6,7 +6,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/proxynode-config.h"
+#include "config/prx-config.h"
 #endif
 
 #include "util.h"
@@ -105,7 +105,7 @@ std::string to_internal(const std::string&);
 
 using namespace std;
 
-// Proxynode only features
+// prx only features
 // Masternode
 bool fMasterNode = false;
 string strMasterNodePrivKey = "";
@@ -227,8 +227,8 @@ bool LogAcceptCategory(const char* category)
             const vector<string>& categories = mapMultiArgs["-debug"];
             ptrCategory.reset(new set<string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
-            // "Proxynode" is a composite category enabling all Proxynode-related debug output
-            if (ptrCategory->count(string("Proxynode"))) {
+            // "prx" is a composite category enabling all prx-related debug output
+            if (ptrCategory->count(string("prx"))) {
                 ptrCategory->insert(string("swifttx"));
                 ptrCategory->insert(string("masternode"));
                 ptrCategory->insert(string("mnpayments"));
@@ -391,7 +391,7 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "Proxynode";
+    const char* pszModule = "prx";
 #endif
     if (pex)
         return strprintf(
@@ -412,13 +412,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-// Windows < Vista: C:\Documents and Settings\Username\Application Data\Prx
-// Windows >= Vista: C:\Users\Username\AppData\Roaming\Prx
-// Mac: ~/Library/Application Support/Prx
-// Unix: ~/.Prx
+// Windows < Vista: C:\Documents and Settings\Username\Application Data\prx
+// Windows >= Vista: C:\Users\Username\AppData\Roaming\prx
+// Mac: ~/Library/Application Support/prx
+// Unix: ~/.prx
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Prx";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "prx";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -430,10 +430,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "Prx";
+    return pathRet / "prx";
 #else
     // Unix
-    return pathRet / ".Prx";
+    return pathRet / ".prx";
 #endif
 #endif
 }

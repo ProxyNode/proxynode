@@ -28,7 +28,7 @@
       </sizepolicy>
      </property>
      <property name="pixmap">
-      <pixmap resource="../proxynode.qrc">:/images/about</pixmap>
+      <pixmap resource="../prx.qrc">:/images/about</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -100,7 +100,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../proxynode.qrc"/>
+  <include location="../prx.qrc"/>
  </resources>
  <connections>
   <connection>
