@@ -3,11 +3,14 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "reverselock.h"
-#include "test/test_dash.h"
 
+#include <boost/bind.hpp>
+#include <boost/random/mersenne_twister.hpp>
+#include <boost/random/uniform_int_distribution.hpp>
+#include <boost/thread.hpp>
 #include <boost/test/unit_test.hpp>
 
-BOOST_FIXTURE_TEST_SUITE(reverselock_tests, BasicTestingSetup)
+BOOST_AUTO_TEST_SUITE(reverselock_tests)
 
 BOOST_AUTO_TEST_CASE(reverselock_basics)
 {

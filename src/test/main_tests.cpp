@@ -1,30 +1,29 @@
-// Copyright (c) 2014-2015 The Bitcoin Core developers
-// Distributed under the MIT software license, see the accompanying
+// Copyright (c) 2014 The Bitcoin Core developers
+// Copyright (c) 2014-2015 The Dash developers
+// Copyright (c) 2015-2017 The PIVX developers
+// Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "net.h"
+#include "primitives/transaction.h"
+#include "main.h"
 
-#include "test/test_dash.h"
-
-#include <boost/signals2/signal.hpp>
 #include <boost/test/unit_test.hpp>
 
-BOOST_FIXTURE_TEST_SUITE(main_tests, TestingSetup)
+BOOST_AUTO_TEST_SUITE(main_tests)
 
-bool ReturnFalse() { return false; }
-bool ReturnTrue() { return true; }
+CAmount nMoneySupplyPoWEnd = 500000 * COIN;
 
-BOOST_AUTO_TEST_CASE(test_combiner_all)
+BOOST_AUTO_TEST_CASE(subsidy_limit_test)
 {
-    boost::signals2::signal<bool (), CombinerAll> Test;
-    BOOST_CHECK(Test());
-    Test.connect(&ReturnFalse);
-    BOOST_CHECK(!Test());
-    Test.connect(&ReturnTrue);
-    BOOST_CHECK(!Test());
-    Test.disconnect(&ReturnFalse);
-    BOOST_CHECK(Test());
-    Test.disconnect(&ReturnTrue);
-    BOOST_CHECK(Test());
+    CAmount nSum = 0;
+    for (int nHeight = 0; nHeight < 1; nHeight += 1) {
+        /* premine in block 1 (500,001 PRX) */
+        CAmount nSubsidy = GetBlockValue(nHeight);
+        BOOST_CHECK(nSubsidy <= 500000 * COIN);
+        nSum += nSubsidy;
+    }
+
+    BOOST_CHECK(nSum == 50000000000000ULL);
 }
+
 BOOST_AUTO_TEST_SUITE_END()
