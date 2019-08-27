@@ -38,11 +38,11 @@ then
   sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
   cd
   rm proxynode-mn*
-  wget https://github.com/ProxyNode/proxynode/releases/download/v2.0.0/Proxynode-Linux-MN-v2.0.0.zip
-  unzip Proxynode-Linux-MN-v2.0.0.zip
+  wget https://github.com/ProxyNode/proxynode/releases/download/v2.1.0/prx-Linux-v2.1.0.zip
+  unzip prx-Linux-v2.1.0.zip
   chmod +x prx*
-  sudo mv  prx* /usr/local/bin
-  rm -rf Proxynode-Linux-MN-v2.0.0.zip prx*
+  sudo mv prx* /usr/local/bin
+  rm -rf prx-Linux-v2.1.0.zip
 
   sudo apt-get install -y ufw
   sudo ufw allow ssh/tcp
