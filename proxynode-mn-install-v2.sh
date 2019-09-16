@@ -40,6 +40,7 @@ then
   rm proxynode-mn*
   wget https://github.com/ProxyNode/proxynode/releases/download/v2.1.0/prx-Linux-v2.1.0.zip
   unzip prx-Linux-v2.1.0.zip
+  cd Linux
   chmod +x prx*
   sudo mv prx* /usr/local/bin
   rm -rf prx-Linux-v2.1.0.zip
