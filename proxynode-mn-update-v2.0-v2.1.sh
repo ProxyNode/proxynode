@@ -7,11 +7,12 @@ bash prx-cli*.sh stop
 wget https://github.com/ProxyNode/proxynode/releases/download/v2.1.0/prx-Linux-v2.1.0.zip
 unzip prx-Linux-v2.1.0.zip
 # Set permissions
-chmod 755 prx*
+chmod 755 Linux/prx*
 # Remove prx v1 and replace with v2
 sudo rm /usr/local/bin/prx*
-sudo mv prx* /usr/local/bin
+sudo mv Linux/prx* /usr/local/bin
 # Tidy up
+rm Linux/ -r
 rm prx-Linux-v2.1.0.zip
 
 # Relaunch masternode
